@@ -1,7 +1,17 @@
-# 🪙 Quorex — The Un-Ruggable DeFi Vault
+# 💎 Quorex — The Un-Ruggable DeFi Vault 🏆
 
 **Polkadot Solidity Hackathon 2026**  
 *Tracks: EVM Smart Contract · OpenZeppelin Sponsor ($1,000)*
+
+---
+
+## 🦾 The 2026 Cyber-Crystal Interface
+
+Quorex isn't just a vault; it's a state-of-the-art financial terminal. Our **Cyber-Crystal & Midnight Slate** design system is engineered for institutional confidence, featuring:
+
+- **Asymmetric Bento Hero**: A modern data-first entry point for real-time protocol health.
+- **Glassmorphism Command Center**: A multi-layered dashboard for strategy monitoring.
+- **PVM-Enforced Security**: Visual safety proofs for every consensus-driven action.
 
 ---
 
@@ -47,8 +57,14 @@ graph TD
 ---
 
 ## 🕹️ Demo
-- **Live App**: [quorex-vault.vercel.app](https://github.com/ShivamSoni20/Quorex) *(Syncing with GitHub)*
-- **Demo Video**: [Watch 3-min walkthrough](https://github.com/ShivamSoni20/Quorex)
+- **Live App**: [quorex-vault.vercel.app](https://github.com/ShivamSoni20/Quorex)
+- **Walkthrough**: [Explore Documentation](./walkthrough.md)
+
+### 📸 Visualizing the Future — interface Preview
+
+| Hero Interface | Command Center | Consensus Engine |
+| :--- | :--- | :--- |
+| ![Quorex Hero](file:///C:/Users/shivamsoni/.gemini/antigravity/brain/b7297058-7606-4d41-9298-987b48f3472c/hero_page_1773865218063.png) | ![Quorex Dashboard](file:///C:/Users/shivamsoni/.gemini/antigravity/brain/b7297058-7606-4d41-9298-987b48f3472c/dashboard_page_1773865252022.png) | ![Quorex Governance](file:///C:/Users/shivamsoni/.gemini/antigravity/brain/b7297058-7606-4d41-9298-987b48f3472c/governance_page_1773865281190.png) |
 
 ---
 
