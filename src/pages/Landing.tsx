@@ -76,8 +76,8 @@ const Landing: React.FC = () => {
              <span className="text-transparent bg-clip-text bg-gradient-to-r from-vault-purple via-vault-teal to-vault-purple animate-gradient bg-[length:200%_auto]">can't rug you.</span>
            </h1>
            
-           <p className="text-vault-muted text-base md:text-xl max-w-2xl mx-auto leading-relaxed px-2">
-             GovernedVault runs on Polkadot Hub. Every strategy change requires a DAO vote and a 48-hour time-lock. 
+            <p className="text-vault-muted text-base md:text-xl max-w-2xl mx-auto leading-relaxed px-2">
+             Quorex runs on Polkadot Hub. Every strategy change requires a DAO vote and a 48-hour time-lock. 
              No admin key. No backdoor.
            </p>
 
@@ -86,7 +86,7 @@ const Landing: React.FC = () => {
                  Launch App
                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
               </Link>
-              <a href="https://github.com/shivamsoni01/GovernedVault" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-10 py-4 border border-vault-border hover:bg-vault-bg2 text-vault-text font-bold rounded-xl transition-all flex items-center justify-center gap-2">
+              <a href="https://github.com/ShivamSoni20/Quorex" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-10 py-4 border border-vault-border hover:bg-vault-bg2 text-vault-text font-bold rounded-xl transition-all flex items-center justify-center gap-2">
                  View on GitHub
               </a>
            </div>
@@ -132,7 +132,7 @@ const Landing: React.FC = () => {
              </div>
              <div className="p-8 border-2 border-vault-teal rounded-2xl bg-vault-bg2/50 shadow-2xl relative overflow-hidden group">
                 <div className="absolute top-0 right-0 px-3 py-1 bg-vault-teal text-[10px] font-bold text-vault-bg uppercase tracking-widest">Governed Solution</div>
-                <h3 className="text-xl font-bold mb-4 font-syne text-vault-teal">GovernedVault</h3>
+                <h3 className="text-xl font-bold mb-4 font-syne text-vault-teal">Quorex</h3>
                 <p className="text-vault-text text-sm leading-relaxed font-bold">
                   "No key. No trust required. Strategy changes only happen after a DAO vote passes AND a 48-hour timelock expires. The contract enforces it — not a policy."
                 </p>
@@ -149,8 +149,8 @@ const Landing: React.FC = () => {
              {[
                { id: '01', t: "Deposit DOT", b: "Deposit DOT into the vault. Receive vault shares and VAULT governance tokens proportional to your deposit." },
                { id: '02', t: "Vote with AI Insights", b: "Use your VAULT tokens to vote on proposals. Leverage integrated AI-powered risk and yield analysis for informed governance." },
-               { id: '03', t: "48-Hour Timelock", b: "Approved changes are queued in the TimelockController. The 48-hour delay is enforced by the smart contract." },
-               { id: '04', t: "XCM Bridge Ready", b: "Deposit from any parachain via Asset Hub. GovernedVault is pre-architected for Polkadot's cross-chain ecosystem." }
+                { id: '03', t: "48-Hour Timelock", b: "Approved changes are queued in the TimelockController. The 48-hour delay is enforced by the smart contract." },
+                { id: '04', t: "XCM Bridge Ready", b: "Deposit from any parachain via Asset Hub. Quorex is pre-architected for Polkadot's cross-chain ecosystem." }
              ].map((step) => (
                 <div key={step.id} className="space-y-4 group">
                    <span className="text-4xl font-mono font-bold text-vault-purple group-hover:text-vault-teal transition-colors opacity-40 group-hover:opacity-100">{step.id}</span>
@@ -180,14 +180,14 @@ const Landing: React.FC = () => {
       <footer className="py-16 px-4 border-t border-vault-border bg-vault-bg text-sm">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-vault-purple rounded-lg flex items-center justify-center font-bold text-white shadow-lg">GV</div>
-              <span className="font-syne font-bold text-lg">GovernedVault</span>
+              <div className="w-8 h-8 bg-vault-purple rounded-lg flex items-center justify-center font-bold text-white shadow-lg">QX</div>
+              <span className="font-syne font-bold text-lg">Quorex</span>
            </div>
            
            <div className="flex flex-wrap justify-center gap-8 text-vault-muted font-bold text-[10px] uppercase tracking-widest">
               <Link to="/app" className="hover:text-vault-purple transition-colors">Dashboard</Link>
               <Link to="/app/governance" className="hover:text-vault-purple transition-colors">Governance</Link>
-              <a href="https://github.com/shivamsoni01/GovernedVault" className="hover:text-vault-purple transition-colors">GitHub</a>
+              <a href="https://github.com/ShivamSoni20/Quorex" className="hover:text-vault-purple transition-colors">GitHub</a>
            </div>
 
            <div className="text-right text-vault-faint text-[10px] uppercase tracking-widest">

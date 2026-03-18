@@ -1,0 +1,14 @@
+{
+  "network": "polkadotHubTestnet",
+  "chainId": "420420417",
+  "deployedAt": "2026-03-18T12:15:00.514Z",
+  "deployerAddress": "0xCA13Be6D30BBbfFd3ACb7751Ef81B76948141502",
+  "contracts": {
+    "VaultToken": "0x6704377C9cEf610Ad53624855584A3BCcae94667",
+    "VaultTimelock": "0x36903E42B7eBb8332fDfeebDa50a74B9b59fC7d2",
+    "VaultGovernor": "0xBd756ccCDa138EaB3C3E640a313D8D1758c798D5",
+    "GovernedVault": "0x8d5F49d27A63de5024FAbAA6780C33e90198d517",
+    "MockStrategyA": "0x0DeC251AA27722361A90E08279fe6D03D260C1Cc",
+    "MockStrategyB": "0x56cB1DB966284851381f86e742EF1213FB5a1bC9"
+  }
+}

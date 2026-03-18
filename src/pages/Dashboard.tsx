@@ -16,7 +16,7 @@ const Dashboard: React.FC = () => {
         {/* Left Column */}
         <div className="lg:w-[65%] space-y-8">
           <div className="space-y-4">
-             <h1 className="text-3xl md:text-4xl font-bold font-syne">Vault Dashboard</h1>
+             <h1 className="text-3xl md:text-4xl font-bold font-syne">Quorex Dashboard</h1>
              <p className="text-vault-muted text-sm md:text-base">Manage your trustless yield position and monitor active strategies.</p>
           </div>
 

@@ -32,7 +32,7 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({ proposal }) => {
 
   return (
     <Link 
-      to={`/governance/${proposal.proposalId.toString()}`}
+      to={`/app/governance/${proposal.proposalId.toString()}`}
       className="bg-vault-bg2 border border-vault-border rounded-xl p-5 hover:border-vault-purple/50 transition-all block group"
     >
       <div className="flex justify-between items-start mb-4">

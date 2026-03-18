@@ -34,6 +34,14 @@ export const CreateProposal: React.FC<CreateProposalProps> = ({ isOpen, onClose 
     }
   }, [STRATEGIES.length, strategyIndex])
 
+  // Close on success
+  React.useEffect(() => {
+    if (write.isSuccess) {
+      const timer = setTimeout(onClose, 2000)
+      return () => clearTimeout(timer)
+    }
+  }, [write.isSuccess, onClose])
+
   if (!isOpen) return null
 
   const handlePropose = async () => {
@@ -55,14 +63,6 @@ export const CreateProposal: React.FC<CreateProposalProps> = ({ isOpen, onClose 
       fullDescription
     )
   }
-
-  // Close on success
-  React.useEffect(() => {
-    if (write.isSuccess) {
-      const timer = setTimeout(onClose, 2000)
-      return () => clearTimeout(timer)
-    }
-  }, [write.isSuccess, onClose])
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-0 md:p-4">

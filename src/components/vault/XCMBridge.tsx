@@ -15,7 +15,7 @@ export const XCMBridge: React.FC = () => {
              Cross-chain Deposit
              <svg className="w-5 h-5 text-vault-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
           </h3>
-          <p className="text-vault-muted text-xs">Bridge DOT from Asset Hub or other Parachains directly into GovernedVault.</p>
+          <p className="text-vault-muted text-xs">Bridge DOT from Asset Hub or other Parachains directly into Quorex.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -30,8 +30,8 @@ export const XCMBridge: React.FC = () => {
            <div className="p-4 bg-vault-bg rounded-2xl border border-vault-border space-y-2">
               <p className="text-[10px] text-vault-muted uppercase font-bold tracking-widest">Destination</p>
               <div className="flex items-center gap-3">
-                 <div className="w-6 h-6 bg-vault-teal rounded-full flex items-center justify-center text-[10px] font-bold text-vault-bg">V</div>
-                 <span className="text-sm font-bold">GovernedVault</span>
+                 <div className="w-6 h-6 bg-vault-teal rounded-full flex items-center justify-center text-[10px] font-bold text-vault-bg">Q</div>
+                 <span className="text-sm font-bold">Quorex</span>
               </div>
            </div>
         </div>

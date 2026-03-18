@@ -21,9 +21,9 @@ export const Navbar: React.FC = () => {
           <div className="flex items-center gap-8">
             <Link to="/" className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-vault-purple flex items-center justify-center font-bold text-white shadow-[0_0_15px_rgba(124,110,230,0.4)]">
-                GV
+                QX
               </div>
-              <span className="text-xl font-bold tracking-tight text-vault-text">GovernedVault</span>
+              <span className="text-xl font-bold tracking-tight text-vault-text">Quorex</span>
             </Link>
 
             <div className="hidden md:flex items-center gap-1">
