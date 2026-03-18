@@ -33,31 +33,36 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({ proposal }) => {
   return (
     <Link 
       to={`/app/governance/${proposal.proposalId.toString()}`}
-      className="bg-vault-bg2 border border-vault-border rounded-xl p-5 hover:border-vault-purple/50 transition-all block group"
+      className="bg-vault-bg2 border border-white/5 rounded-[32px] p-8 hover:bg-white/5 transition-all block group relative overflow-hidden"
     >
-      <div className="flex justify-between items-start mb-4">
-        <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase border ${colors[state ?? 0]}`}>
+      <div className="absolute top-0 right-0 w-32 h-32 bg-vault-purple/5 blur-3xl -mr-16 -mt-16 group-hover:bg-vault-purple/10 transition-colors"></div>
+      
+      <div className="flex justify-between items-center mb-6 relative z-10">
+        <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border ${colors[state ?? 0]}`}>
           {states[state ?? 0]}
         </span>
-        <span className="text-vault-faint text-[10px] font-mono">ID: {proposal.proposalId.toString().slice(0, 8)}...</span>
+        <span className="text-vault-faint text-[10px] font-mono font-bold tracking-widest">#{proposal.proposalId.toString().slice(0, 8)}</span>
       </div>
 
-      <h4 className="text-lg font-bold text-vault-text mb-2 group-hover:text-vault-purple transition-colors">
+      <h4 className="text-xl font-black font-syne text-white mb-4 group-hover:text-vault-purple transition-colors leading-tight relative z-10">
         {title}{proposal.description.length > 80 ? '...' : ''}
       </h4>
       
-      <p className="text-vault-muted text-xs mb-4">
-        Proposer: {formatAddress(proposal.proposer)}
-      </p>
+      <div className="flex items-center gap-2 mb-8 relative z-10">
+         <div className="w-5 h-5 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
+            <div className="w-1.5 h-1.5 rounded-full bg-vault-purple"></div>
+         </div>
+         <span className="text-vault-muted text-[10px] font-bold uppercase tracking-widest">{formatAddress(proposal.proposer)}</span>
+      </div>
 
-      <div className="space-y-3">
-        <div className="flex justify-between text-[10px] text-vault-muted uppercase font-bold">
-          <span>For ({forPercent}%)</span>
-          <span>Against ({100 - forPercent}%)</span>
+      <div className="space-y-4 relative z-10">
+        <div className="flex justify-between text-[10px] text-vault-muted uppercase font-black tracking-[0.2em]">
+          <span className="text-vault-teal">For {forPercent}%</span>
+          <span className="text-vault-red">Against {100 - forPercent}%</span>
         </div>
-        <div className="h-1.5 w-full bg-vault-bg shadow-inner rounded-full overflow-hidden flex">
-          <div className="h-full bg-vault-teal" style={{ width: `${forPercent}%` }}></div>
-          <div className="h-full bg-vault-red" style={{ width: `${100 - forPercent}%` }}></div>
+        <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden flex">
+          <div className="h-full bg-vault-teal shadow-[0_0_10px_rgba(163,230,53,0.5)]" style={{ width: `${forPercent}%` }}></div>
+          <div className="h-full bg-vault-red shadow-[0_0_10px_rgba(255,75,92,0.5)]" style={{ width: `${100 - forPercent}%` }}></div>
         </div>
       </div>
     </Link>

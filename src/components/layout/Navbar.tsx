@@ -15,26 +15,26 @@ export const Navbar: React.FC = () => {
   React.useEffect(() => setIsOpen(false), [location.pathname])
 
   return (
-    <nav className="border-b border-vault-border bg-vault-bg/80 backdrop-blur-md sticky top-0 z-40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          <div className="flex items-center gap-8">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-vault-purple flex items-center justify-center font-bold text-white shadow-[0_0_15px_rgba(124,110,230,0.4)]">
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl animate-in slide-in-from-top-4 duration-1000">
+      <div className="bg-vault-bg2/40 backdrop-blur-2xl border border-white/5 rounded-full px-6 py-3 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-10">
+            <Link to="/" className="flex items-center gap-2.5 group">
+              <div className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center font-black text-sm shadow-[0_0_20px_rgba(255,255,255,0.2)] group-hover:scale-110 transition-transform">
                 QX
               </div>
-              <span className="text-xl font-bold tracking-tight text-vault-text">Quorex</span>
+              <span className="text-xl font-black tracking-tighter text-white font-syne uppercase">Quorex</span>
             </Link>
 
-            <div className="hidden md:flex items-center gap-1">
+            <div className="hidden md:flex items-center gap-2 bg-black/20 p-1 rounded-full border border-white/5">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                  className={`px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
                     location.pathname === item.path
-                      ? 'text-vault-purple bg-vault-purple/10'
-                      : 'text-vault-muted hover:text-vault-text hover:bg-vault-bg3'
+                      ? 'text-black bg-white shadow-xl scale-105'
+                      : 'text-vault-muted hover:text-white'
                   }`}
                 >
                   {item.name}
@@ -43,7 +43,8 @@ export const Navbar: React.FC = () => {
             </div>
           </div>
 
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-4">
+            <div className="h-4 w-[1px] bg-white/10"></div>
             <ConnectWallet />
           </div>
 

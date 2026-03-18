@@ -19,16 +19,19 @@ export const VaultStats: React.FC = () => {
   ]
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
       {stats.map((stat, i) => (
-        <div key={i} className="bg-vault-bg2 border border-vault-border rounded-2xl p-4 md:p-6 hover:border-vault-purple/50 transition-all hover:bg-vault-bg3 group">
-          <p className="text-vault-muted text-xs font-semibold uppercase tracking-wider mb-2">{stat.label}</p>
-          <p className={`text-2xl font-bold ${stat.highlight ? 'text-vault-teal' : 'text-vault-text'}`}>
+        <div key={i} className="bg-white/[0.02] backdrop-blur-xl border border-white/[0.05] rounded-[28px] p-6 md:p-8 hover:bg-white/5 transition-all duration-300 group relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-30 transition-opacity">
+            <div className="w-8 h-8 rounded-full bg-vault-purple blur-xl"></div>
+          </div>
+          <p className="text-vault-muted text-[10px] font-black uppercase tracking-[0.2em] mb-4 group-hover:text-white transition-colors">{stat.label}</p>
+          <p className={`text-2xl md:text-3xl font-mono font-black ${stat.highlight ? 'text-vault-teal' : 'text-white'}`}>
             {vaultLoading || strategyLoading ? (
-               <span className="animate-pulse bg-vault-bg3 h-8 w-24 rounded inline-block"></span>
+               <span className="animate-pulse bg-white/5 h-8 w-24 rounded-lg inline-block"></span>
             ) : stat.value}
           </p>
-          <p className="text-vault-faint text-[10px] mt-1">{stat.sub}</p>
+          <p className="text-vault-faint text-[10px] mt-2 font-medium tracking-tight uppercase">{stat.sub}</p>
         </div>
       ))}
     </div>
