@@ -6,84 +6,103 @@ import { DepositPanel } from '../components/vault/DepositPanel'
 import { WithdrawPanel } from '../components/vault/WithdrawPanel'
 import { XCMBridge } from '../components/vault/XCMBridge'
 import { PVMSecurity } from '../components/governance/PVMSecurity'
-import { formatDOT } from '../utils/format'
 
 const Dashboard: React.FC = () => {
   const [tab, setTab] = useState<'deposit' | 'withdraw'>('deposit');
 
   return (
-    <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-12 animate-in fade-in zoom-in-95 duration-1000">
-      <div className="flex flex-col xl:flex-row gap-10 items-start">
-        
-        {/* Left: Quick Controls Sidebar */}
-        <div className="w-full xl:w-[400px] xl:sticky xl:top-28">
-          <div className="bg-vault-bg2 border border-white/5 rounded-[40px] overflow-hidden shadow-2xl relative">
-             <div className="absolute top-0 right-0 w-32 h-32 bg-vault-teal/5 blur-3xl -mr-16 -mt-16"></div>
+    <div className="mesh-bg min-h-screen pt-32 pb-20 px-6 lg:px-12 selection:bg-vault-indigo/30">
+      <div className="max-w-[1600px] mx-auto">
+        <div className="flex flex-col xl:flex-row gap-12 items-start">
+          
+          {/* Left: Terminal Console Sidebar */}
+          <div className="w-full xl:w-[440px] xl:sticky xl:top-32">
+            <div className="glass-card rounded-[48px] overflow-hidden shadow-2xl relative border-white/10 group">
+               {/* Decorative Scanner Line */}
+               <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-vault-cyan to-transparent opacity-50 animate-glow-line"></div>
+               
+               <div className="p-10 pb-6">
+                  <h2 className="text-3xl font-black font-syne text-white mb-2 uppercase italic tracking-tighter">Terminal</h2>
+                  <p className="text-vault-muted text-[10px] font-black uppercase tracking-[0.4em]">Vault Execution Interface</p>
+               </div>
+
+               <div className="flex p-2 bg-white/5 mx-8 mb-8 rounded-[24px] border border-white/5">
+                  <button
+                     onClick={() => setTab('deposit')}
+                     className={`flex-1 py-4 text-[11px] font-black uppercase tracking-[0.2em] rounded-[18px] transition-all duration-500 ${
+                       tab === 'deposit' ? 'bg-white text-black shadow-2xl scale-100' : 'text-vault-muted hover:text-white hover:bg-white/5 scale-95'
+                     }`}
+                  >
+                     Deposit
+                  </button>
+                  <button
+                     onClick={() => setTab('withdraw')}
+                     className={`flex-1 py-4 text-[11px] font-black uppercase tracking-[0.2em] rounded-[18px] transition-all duration-500 ${
+                       tab === 'withdraw' ? 'bg-white text-black shadow-2xl scale-100' : 'text-vault-muted hover:text-white hover:bg-white/5 scale-95'
+                     }`}
+                  >
+                     Withdraw
+                  </button>
+               </div>
+
+               <div className="px-10 pb-12">
+                  <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+                    {tab === 'deposit' ? <DepositPanel /> : <WithdrawPanel />}
+                  </div>
+               </div>
+
+               {/* Console Status Bar */}
+               <div className="p-6 bg-white/5 border-t border-white/5 flex items-center justify-between px-10 text-[10px] font-mono font-black uppercase tracking-widest text-vault-faint group-hover:text-vault-muted transition-colors">
+                  <span className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-vault-cyan animate-pulse"></span>
+                    Sync: Active
+                  </span>
+                  <span>v.1.0.4-hackathon</span>
+               </div>
+            </div>
+          </div>
+
+          {/* Right: Mission Control Center */}
+          <div className="flex-grow space-y-12 w-full">
+             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-8 border-b border-white/5">
+                <div className="space-y-4">
+                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass border border-white/10 text-[9px] font-black uppercase tracking-widest text-vault-cyan">
+                      Sector: Polkadot Hub / EVM-1
+                   </div>
+                   <h1 className="text-5xl md:text-7xl font-black font-syne text-white tracking-tighter uppercase italic leading-none">Command Center</h1>
+                   <p className="text-vault-muted text-lg max-w-2xl font-light">
+                      Trustless yield aggregation secured by <span className="text-white font-medium italic">QX DAO consensus</span> and AI-backed safety audits.
+                   </p>
+                </div>
+                <div className="flex gap-4">
+                   <div className="glass px-6 py-4 rounded-3xl border border-white/5 text-center">
+                      <div className="text-[9px] font-black uppercase tracking-widest text-vault-faint mb-1">Status</div>
+                      <div className="text-sm font-bold text-vault-emerald uppercase tracking-tighter">Operational</div>
+                   </div>
+                </div>
+             </div>
+
+             <div className="animate-in fade-in slide-in-from-right-8 duration-1000">
+                <VaultStats />
+             </div>
              
-             <div className="p-8 pb-4">
-                <h2 className="text-2xl font-black font-syne text-white mb-1">Terminal</h2>
-                <p className="text-vault-muted text-xs uppercase tracking-widest font-bold">Execution Interface</p>
-             </div>
-
-             <div className="flex p-2 bg-black/20 mx-6 mb-6 rounded-2xl">
-                <button
-                   onClick={() => setTab('deposit')}
-                   className={`flex-1 py-3 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all ${
-                     tab === 'deposit' ? 'bg-vault-purple text-black' : 'text-vault-muted hover:text-white'
-                   }`}
-                >
-                   Deposit
-                </button>
-                <button
-                   onClick={() => setTab('withdraw')}
-                   className={`flex-1 py-3 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all ${
-                     tab === 'withdraw' ? 'bg-vault-purple text-black' : 'text-vault-muted hover:text-white'
-                   }`}
-                >
-                   Withdraw
-                </button>
-             </div>
-
-             <div className="px-8 pb-10">
-                {tab === 'deposit' ? <DepositPanel /> : <WithdrawPanel />}
-             </div>
-
-             <div className="p-4 bg-white/5 border-t border-white/5 flex items-center justify-between px-8 text-[10px] font-mono text-vault-faint">
-                <span>0x...{formatDOT(0n)} QX</span>
-                <span className="flex items-center gap-1">
-                   <span className="w-1.5 h-1.5 rounded-full bg-vault-teal animate-pulse"></span>
-                   Syncing
-                </span>
+             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div className="lg:col-span-8 space-y-12">
+                   <StrategyDisplay />
+                   <UserPosition />
+                </div>
+                <div className="lg:col-span-4 space-y-12">
+                   <XCMBridge />
+                   <PVMSecurity />
+                </div>
              </div>
           </div>
+
         </div>
-
-        {/* Right: Operations Overview */}
-        <div className="flex-grow space-y-10 w-full">
-           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-              <div className="space-y-2">
-                 <h1 className="text-4xl md:text-6xl font-black font-syne text-white tracking-tighter">Command Center</h1>
-                 <p className="text-vault-muted text-lg max-w-xl">Trustless yield aggregation on Polkadot Hub. Managed by QX holders.</p>
-              </div>
-           </div>
-
-           <VaultStats />
-           
-           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-              <div className="lg:col-span-8 space-y-10">
-                 <StrategyDisplay />
-                 <UserPosition />
-              </div>
-              <div className="lg:col-span-4 space-y-8">
-                 <XCMBridge />
-                 <PVMSecurity />
-              </div>
-           </div>
-        </div>
-
       </div>
     </div>
   )
 }
 
 export default Dashboard
+

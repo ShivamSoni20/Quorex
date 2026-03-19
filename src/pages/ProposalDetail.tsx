@@ -23,9 +23,11 @@ const ProposalDetail: React.FC = () => {
   const { data: voted } = useHasVoted(idBigInt, address!)
 
   if (!proposal) return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
-      <div className="text-vault-muted text-lg font-syne italic">Proposal not found or still loading...</div>
-      <Link to="/app/governance" className="text-vault-purple hover:underline text-sm font-bold">Return to Governance</Link>
+    <div className="mesh-bg min-h-screen flex flex-col items-center justify-center p-12">
+      <div className="glass-card p-12 text-center rounded-[48px] border-white/10">
+        <div className="text-vault-muted text-lg font-syne italic uppercase tracking-[0.3em] mb-8">Node Desynchronized</div>
+        <Link to="/app/governance" className="px-10 py-5 bg-white text-black font-black uppercase tracking-widest rounded-2xl hover:scale-105 transition-all text-xs">Re-establish Connection</Link>
+      </div>
     </div>
   )
 
@@ -54,163 +56,168 @@ const ProposalDetail: React.FC = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-in fade-in duration-700">
-      <Link to="/app/governance" className="inline-flex items-center gap-2 text-vault-muted hover:text-vault-text mb-8 group transition-colors">
-        <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-        Back to Governance
-      </Link>
+    <div className="mesh-bg min-h-screen pt-32 pb-20 px-6 lg:px-12 selection:bg-vault-indigo/30">
+      <div className="max-w-[1400px] mx-auto">
+        <Link to="/app/governance" className="inline-flex items-center gap-4 text-vault-muted hover:text-white mb-12 group transition-all text-[10px] font-black uppercase tracking-[0.4em]">
+          <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-vault-cyan transition-colors">
+            <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" /></svg>
+          </div>
+          Return to Ledger
+        </Link>
 
-      <div className="flex flex-col lg:flex-row gap-8">
-        {/* Left Column (Main Info) */}
-        <div className="flex-grow lg:w-[65%] space-y-8">
-           <div className="space-y-4">
-              <div className="flex flex-wrap items-center gap-3">
-                 <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest ${
-                   state === 1 ? 'bg-vault-teal/20 text-vault-teal border border-vault-teal/30' :
-                   state === 7 ? 'bg-vault-muted/20 text-vault-muted border border-vault-muted/30' : 
-                   'bg-vault-purple/20 text-vault-purple border border-vault-purple/30'
-                 }`}>
-                   {stateLabel}
-                 </span>
-                 <span className="text-vault-faint text-xs font-mono">ID: {proposalId}</span>
-              </div>
-              <h1 className="text-2xl md:text-5xl font-bold font-syne text-vault-text leading-tight">
-                {proposal.description.split('\n')[0]}
-              </h1>
-              <div className="flex items-center gap-2 text-vault-muted text-xs">
-                <span>Proposed by</span>
-                <span className="text-vault-faint font-mono">{formatAddress(proposal.proposer)}</span>
-              </div>
-           </div>
-
-           {/* Execution Preview */}
-           <div className="bg-vault-bg2 border border-vault-border rounded-2xl p-6 md:p-8 space-y-6">
-              <h3 className="text-lg font-bold font-syne">Execution Details</h3>
-              <div className="space-y-4">
-                 <div className="bg-vault-bg p-4 rounded-xl border border-vault-border">
-                    <p className="text-xs font-bold text-vault-muted uppercase tracking-widest mb-2">Target Address</p>
-                    <code className="text-xs break-all text-vault-teal">{proposal.targets[0]}</code>
-                 </div>
-                 <div className="bg-vault-bg p-4 rounded-xl border border-vault-border overflow-hidden">
-                    <p className="text-xs font-bold text-vault-muted uppercase tracking-widest mb-2">Decoded Action</p>
-                    <div className="text-sm font-bold text-vault-purple">{decoded.action}</div>
-                    <div className="text-xs text-vault-faint mt-1 truncate">{decoded.strategy}</div>
-                 </div>
-                 <div className="bg-vault-bg p-4 rounded-xl border border-vault-border">
-                    <p className="text-xs font-bold text-vault-muted uppercase tracking-widest mb-2">Raw Calldata</p>
-                    <code className="text-[10px] break-all text-vault-muted/50 leading-relaxed max-h-24 block overflow-y-auto no-scrollbar font-mono">
-                      {proposal.calldatas[0]}
-                    </code>
-                 </div>
-              </div>
-           </div>
-
-           {/* Rationale */}
-           <div className="space-y-4">
-              <h3 className="text-lg font-bold font-syne">Rationale</h3>
-              <div className="text-vault-muted text-sm md:text-base leading-relaxed whitespace-pre-wrap bg-vault-bg2/30 p-6 md:p-10 rounded-3xl border border-vault-border">
-                 {proposal.description}
-              </div>
-           </div>
-
-           {/* AI Insight (Hackathon winning feature) */}
-           <div className="space-y-4">
-              <h3 className="text-lg font-bold font-syne flex items-center gap-2">
-                 AI Risk Analysis
-                 <span className="text-[10px] px-2 py-0.5 bg-vault-teal/10 text-vault-teal rounded-full font-bold uppercase border border-vault-teal/20">Optional Tool</span>
-              </h3>
-              <AIAnalysis strategyName={decoded.action} apy="Variable" />
-           </div>
-        </div>
-
-        {/* Right Column (Sidebar/Card) */}
-        <div className="lg:w-[35%] space-y-8">
-           <div className="lg:sticky lg:top-24 space-y-8">
-              <div className="bg-vault-bg2 border border-vault-border rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden group">
-                 <div className="absolute top-0 right-0 w-32 h-32 bg-vault-purple/5 blur-3xl -mr-16 -mt-16 group-hover:bg-vault-purple/10 transition-colors"></div>
-                 <h3 className="text-lg font-bold mb-6 font-syne">Vote Tally</h3>
-                 <VoteTally proposalId={proposalId as string} />
-                 
-                 {state === 1 && (
-                   <div className="space-y-4 mt-8">
-                     {!voted ? (
-                       <div className="grid grid-cols-2 gap-3">
-                         <TxButton 
-                           onClick={() => write.castVote(idBigInt, 1)}
-                           isPending={write.isPending}
-                           isSuccess={write.isSuccess}
-                           error={write.error}
-                           label="FOR"
-                           variant="secondary"
-                           className="py-4"
-                         />
-                         <TxButton 
-                           onClick={() => write.castVote(idBigInt, 0)}
-                           isPending={write.isPending}
-                           isSuccess={write.isSuccess}
-                           error={write.error}
-                           label="AGAINST"
-                           variant="danger"
-                           className="py-4"
-                         />
-                       </div>
-                     ) : (
-                       <div className="p-4 bg-vault-teal/10 border border-vault-teal/20 rounded-xl text-center">
-                          <p className="text-vault-teal font-bold text-sm flex items-center justify-center gap-2">
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                            Vote Cast Recorded
-                          </p>
-                       </div>
-                     )}
+        <div className="flex flex-col xl:flex-row gap-16 items-start">
+          {/* Left Column (Main Info) */}
+          <div className="flex-grow xl:w-[65%] space-y-16">
+             <div className="space-y-8">
+                <div className="flex flex-wrap items-center gap-4">
+                   <div className={`px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-[0.4em] glass ${
+                     state === 1 ? 'border-vault-cyan text-vault-cyan' :
+                     state === 7 ? 'border-vault-muted text-vault-muted' : 
+                     'border-vault-indigo text-vault-indigo'
+                   }`}>
+                     {stateLabel}
                    </div>
-                 )}
+                   <span className="text-vault-muted text-[10px] font-mono font-black uppercase tracking-widest bg-white/5 px-4 py-2 border border-white/5 rounded-xl">Index: {proposalId}</span>
+                </div>
+                <h1 className="text-5xl md:text-7xl font-black font-syne text-white leading-none tracking-tighter uppercase italic">
+                  {proposal.description.split('\n')[0]}
+                </h1>
+                <div className="flex items-center gap-4 text-vault-muted text-[10px] font-black uppercase tracking-widest">
+                  <div className="w-8 h-8 rounded-full glass border border-white/10 flex items-center justify-center text-vault-cyan italic">Q</div>
+                  <span>Proposed by <span className="text-white font-mono">{formatAddress(proposal.proposer)}</span></span>
+                </div>
+             </div>
 
-                 {/* Queue/Execute Controls */}
-                 {state === 4 && (
-                   <div className="mt-8">
-                      <TxButton 
-                        onClick={handleQueue}
-                        isPending={write.isPending}
-                        isSuccess={write.isSuccess}
-                        error={write.error}
-                        label="Queue in Timelock"
-                        className="w-full py-4"
-                      />
+             {/* Execution Preview */}
+             <div className="glass-card rounded-[48px] p-10 space-y-10 border-white/10 relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-vault-indigo/5 blur-[80px] -mr-32 -mt-32 transition-colors group-hover:bg-vault-cyan/5"></div>
+                <h3 className="text-2xl font-black font-syne text-white uppercase italic tracking-tighter border-b border-white/5 pb-4">Execution Protocol</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                   <div className="glass p-6 rounded-3xl border border-white/5 space-y-3">
+                      <p className="text-[9px] font-black text-vault-faint uppercase tracking-[0.3em] italic">Target Authority</p>
+                      <code className="text-xs break-all text-vault-cyan font-mono">{proposal.targets[0]}</code>
                    </div>
-                 )}
-                 {state === 5 && (
-                   <div className="mt-8">
-                      <TxButton 
-                        onClick={handleExecute}
-                        isPending={write.isPending}
-                        isSuccess={write.isSuccess}
-                        error={write.error}
-                        label="Execute Strategy"
-                        variant="secondary"
-                        className="w-full py-4 text-vault-bg"
-                      />
+                   <div className="glass p-6 rounded-3xl border border-white/5 space-y-3">
+                      <p className="text-[9px] font-black text-vault-faint uppercase tracking-[0.3em] italic">Operation Type</p>
+                      <div className="text-base font-black text-white uppercase tracking-tighter">{decoded.action}</div>
                    </div>
-                 )}
-              </div>
+                   <div className="md:col-span-2 glass p-6 rounded-3xl border border-white/5 space-y-4">
+                      <p className="text-[9px] font-black text-vault-faint uppercase tracking-[0.3em] italic">Raw Payload Stream</p>
+                      <code className="text-[10px] break-all text-vault-muted/40 leading-relaxed max-h-32 block overflow-y-auto no-scrollbar font-mono uppercase">
+                        {proposal.calldatas[0]}
+                      </code>
+                   </div>
+                </div>
+             </div>
 
-              <div className="bg-vault-bg2/50 border border-vault-border rounded-3xl p-6">
-                 <h4 className="text-xs font-bold text-vault-muted uppercase tracking-widest mb-4">Governance Rules</h4>
-                 <ul className="space-y-3">
-                    <li className="flex items-center gap-2 text-xs text-vault-muted">
-                       <span className="w-1.5 h-1.5 rounded-full bg-vault-purple"></span>
-                       Voting Period: 1 Day
-                    </li>
-                    <li className="flex items-center gap-2 text-xs text-vault-muted">
-                       <span className="w-1.5 h-1.5 rounded-full bg-vault-purple"></span>
-                       Quorum: 4% of total supply
-                    </li>
-                    <li className="flex items-center gap-2 text-xs text-vault-muted">
-                       <span className="w-1.5 h-1.5 rounded-full bg-vault-teal"></span>
-                       Timelock Delay: 48 Hours
-                    </li>
-                 </ul>
-              </div>
-           </div>
+             {/* Rationale */}
+             <div className="space-y-6">
+                <h3 className="text-2xl font-black font-syne text-white uppercase italic tracking-tighter">Proposition Details</h3>
+                <div className="text-vault-muted text-sm md:text-lg leading-relaxed whitespace-pre-wrap glass p-10 rounded-[48px] border border-white/5 font-light trackin-widest">
+                   {proposal.description}
+                </div>
+             </div>
+
+             {/* AI Insight */}
+             <div className="space-y-8">
+                <div className="flex items-center justify-between border-b border-white/5 pb-6">
+                   <h3 className="text-2xl font-black font-syne text-white uppercase italic tracking-tighter flex items-center gap-4">
+                      AI Risk Assessment
+                      <span className="animate-pulse w-2 h-2 rounded-full bg-vault-cyan shadow-[0_0_15px_rgba(34,211,238,0.5)]"></span>
+                   </h3>
+                   <span className="text-[9px] px-4 py-1.5 bg-vault-cyan/10 text-vault-cyan rounded-full font-black uppercase border border-vault-cyan/20 tracking-widest italic">Secure Vector</span>
+                </div>
+                <AIAnalysis strategyName={decoded.action} apy="Variable" />
+             </div>
+          </div>
+
+          {/* Right Column (Sidebar/Card) */}
+          <div className="w-full xl:w-[450px] space-y-12 xl:sticky xl:top-32">
+             <div className="glass-card rounded-[48px] p-10 shadow-2xl relative overflow-hidden group border-white/10">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-vault-indigo/5 blur-3xl -mr-20 -mt-20 group-hover:bg-vault-indigo/10 transition-colors duration-1000"></div>
+                <h3 className="text-2xl font-black mb-10 font-syne text-white uppercase italic tracking-tighter border-b border-white/5 pb-4">Consensus Tally</h3>
+                <VoteTally proposalId={proposalId as string} />
+                
+                {state === 1 && (
+                  <div className="space-y-6 mt-12 pt-8 border-t border-white/5">
+                    {!voted ? (
+                      <div className="grid grid-cols-1 gap-4">
+                        <TxButton 
+                          onClick={() => write.castVote(idBigInt, 1)}
+                          isPending={write.isPending}
+                          isSuccess={write.isSuccess}
+                          error={write.error}
+                          label="APPROVE PROPOSAL"
+                          variant="primary"
+                          className="py-6 rounded-[24px]"
+                        />
+                        <TxButton 
+                          onClick={() => write.castVote(idBigInt, 0)}
+                          isPending={write.isPending}
+                          isSuccess={write.isSuccess}
+                          error={write.error}
+                          label="REJECT PROPOSAL"
+                          variant="danger"
+                          className="py-6 rounded-[24px]"
+                        />
+                      </div>
+                    ) : (
+                      <div className="p-8 bg-vault-cyan/5 border border-vault-cyan/20 rounded-[32px] text-center shadow-2xl">
+                         <p className="text-vault-cyan font-black text-xs flex items-center justify-center gap-3 uppercase tracking-[0.2em] italic">
+                           <svg className="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
+                           Consensus Signature Recorded
+                         </p>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Queue/Execute Controls */}
+                {state === 4 && (
+                  <div className="mt-12">
+                     <TxButton 
+                       onClick={handleQueue}
+                       isPending={write.isPending}
+                       isSuccess={write.isSuccess}
+                       error={write.error}
+                       label="Queue in Timelock"
+                       className="w-full py-6 rounded-[24px]"
+                     />
+                  </div>
+                )}
+                {state === 5 && (
+                  <div className="mt-12">
+                     <TxButton 
+                       onClick={handleExecute}
+                       isPending={write.isPending}
+                       isSuccess={write.isSuccess}
+                       error={write.error}
+                       label="Execute Strategy"
+                       variant="secondary"
+                       className="w-full py-6 rounded-[24px] text-black font-black"
+                     />
+                  </div>
+                )}
+             </div>
+
+             <div className="glass rounded-[48px] p-10 border border-white/5 relative overflow-hidden">
+                <h4 className="text-[10px] font-black text-vault-faint uppercase tracking-[0.4em] mb-8 italic border-b border-white/5 pb-4">Operational Parameters</h4>
+                <ul className="space-y-6">
+                   <li className="flex items-center justify-between text-[11px] font-black uppercase tracking-widest group">
+                      <span className="text-vault-muted group-hover:text-white transition-colors">Voting Window</span>
+                      <span className="text-white bg-white/5 px-4 py-1.5 rounded-lg border border-white/5 font-mono">24 Hours</span>
+                   </li>
+                   <li className="flex items-center justify-between text-[11px] font-black uppercase tracking-widest group">
+                      <span className="text-vault-muted group-hover:text-white transition-colors">Quorum Requirement</span>
+                      <span className="text-white bg-white/5 px-4 py-1.5 rounded-lg border border-white/5 font-mono">40.0 QX</span>
+                   </li>
+                   <li className="flex items-center justify-between text-[11px] font-black uppercase tracking-widest group">
+                      <span className="text-vault-muted group-hover:text-white transition-colors">Execution Delay</span>
+                      <span className="text-vault-indigo bg-vault-indigo/5 px-4 py-1.5 rounded-lg border border-vault-indigo/10 font-mono">48 Hours</span>
+                   </li>
+                </ul>
+             </div>
+          </div>
         </div>
       </div>
     </div>
@@ -218,3 +225,4 @@ const ProposalDetail: React.FC = () => {
 }
 
 export default ProposalDetail
+

@@ -9,29 +9,50 @@ export const VaultStats: React.FC = () => {
   const { apy, isLoading: strategyLoading } = useStrategy()
   const { proposals } = useProposals()
 
-  const activeProposalsCount = (proposals || []).length // Should filter by state in real impl
+  const activeProposalsCount = (proposals || []).length
 
   const stats = [
-    { label: 'Total Value Locked', value: `${formatDOT(totalAssets as bigint)} DOT`, sub: 'Across all depositors' },
-    { label: 'Current APY', value: formatAPY(apy as bigint), sub: 'Variable strategy yield', highlight: true },
-    { label: 'Share Price', value: `${formatDOT(sharePrice as bigint)} DOT`, sub: 'Value per gvTOKEN share' },
-    { label: 'Active Proposals', value: activeProposalsCount.toString(), sub: 'Pending governance votes' },
+    { label: 'Total Value Locked', value: `${formatDOT(totalAssets as bigint)} DOT`, sub: 'Vault Aggregation', icon: 'tvl' },
+    { label: 'Dynamic APY', value: formatAPY(apy as bigint), sub: 'Live Strategy Output', highlight: true, icon: 'apy' },
+    { label: 'Vault Token Price', value: `${formatDOT(sharePrice as bigint)} DOT`, sub: 'Current Index Value', icon: 'price' },
+    { label: 'Active Governance', value: activeProposalsCount.toString(), sub: 'Pending Decisions', icon: 'proposal' },
   ]
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       {stats.map((stat, i) => (
-        <div key={i} className="bg-white/[0.02] backdrop-blur-xl border border-white/[0.05] rounded-[28px] p-6 md:p-8 hover:bg-white/5 transition-all duration-300 group relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-30 transition-opacity">
-            <div className="w-8 h-8 rounded-full bg-vault-purple blur-xl"></div>
+        <div key={i} className="glass-card rounded-[40px] p-8 group relative overflow-hidden transition-all duration-500 hover:-translate-y-2">
+          {/* Animated Accent Glow */}
+          <div className="absolute top-0 right-0 w-32 h-32 bg-vault-indigo/5 blur-[60px] group-hover:bg-vault-cyan/10 transition-colors duration-700"></div>
+          
+          <div className="relative z-10">
+            <div className="flex items-center justify-between mb-8">
+              <span className={`text-[10px] font-black uppercase tracking-[0.4em] ${stat.highlight ? 'text-vault-cyan' : 'text-vault-muted'}`}>
+                {stat.label}
+              </span>
+              {stat.highlight && (
+                <div className="w-2.5 h-2.5 rounded-full bg-vault-cyan animate-pulse shadow-[0_0_15px_rgba(34,211,238,0.5)]"></div>
+              )}
+            </div>
+
+            <div className={`text-3xl xl:text-4xl font-black font-syne tracking-tighter ${stat.highlight ? 'text-white' : 'text-white/90'}`}>
+              {vaultLoading || strategyLoading ? (
+                 <div className="animate-pulse bg-white/5 h-10 w-32 rounded-2xl"></div>
+              ) : stat.value}
+            </div>
+
+            <div className="mt-4 flex items-center justify-between">
+              <span className="text-[10px] font-black uppercase tracking-widest text-vault-faint group-hover:text-vault-muted transition-colors">
+                {stat.sub}
+              </span>
+              <div className="opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0 transition-transform text-vault-cyan">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </div>
+            </div>
           </div>
-          <p className="text-vault-muted text-[10px] font-black uppercase tracking-[0.2em] mb-4 group-hover:text-white transition-colors">{stat.label}</p>
-          <p className={`text-2xl md:text-3xl font-mono font-black ${stat.highlight ? 'text-vault-teal' : 'text-white'}`}>
-            {vaultLoading || strategyLoading ? (
-               <span className="animate-pulse bg-white/5 h-8 w-24 rounded-lg inline-block"></span>
-            ) : stat.value}
-          </p>
-          <p className="text-vault-faint text-[10px] mt-2 font-medium tracking-tight uppercase">{stat.sub}</p>
+
+          {/* Bottom Edge Indicator */}
+          <div className={`absolute bottom-0 left-0 h-1 transition-all duration-500 bg-gradient-to-r from-transparent via-vault-cyan to-transparent ${stat.highlight ? 'w-full opacity-60' : 'w-0 group-hover:w-full opacity-0 group-hover:opacity-40'}`}></div>
         </div>
       ))}
     </div>
