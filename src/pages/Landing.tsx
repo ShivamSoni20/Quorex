@@ -99,18 +99,18 @@ const Landing: React.FC = () => {
               </a>
             </div>
 
-            <div className="grid grid-cols-3 gap-12 pt-16 border-t border-white/5">
-              <div>
-                <div className="text-3xl font-black font-syne text-white mb-1">{formatAPY(stats.apy)}</div>
-                <div className="text-[10px] font-black uppercase tracking-widest text-vault-faint">Optimized APY</div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 pt-16 border-t border-white/5">
+              <div className="space-y-2">
+                <div className="text-4xl xl:text-5xl font-black font-syne text-white tracking-tighter uppercase italic">{formatAPY(stats.apy)}</div>
+                <div className="text-[10px] font-black uppercase tracking-[0.3em] text-vault-faint">Optimized APY</div>
               </div>
-              <div>
-                <div className="text-3xl font-black font-syne text-white mb-1">{formatDOT(stats.tvl).split('.')[0]}M+</div>
-                <div className="text-[10px] font-black uppercase tracking-widest text-vault-faint">Protocol TVL</div>
+              <div className="space-y-2">
+                <div className="text-4xl xl:text-5xl font-black font-syne text-white tracking-tighter uppercase italic">{formatDOT(stats.tvl).split('.')[0]}M+</div>
+                <div className="text-[10px] font-black uppercase tracking-[0.4em] text-vault-faint">Protocol TVL</div>
               </div>
-              <div>
-                <div className="text-3xl font-black font-syne text-white mb-1">48H</div>
-                <div className="text-[10px] font-black uppercase tracking-widest text-vault-faint">Safety Timelock</div>
+              <div className="space-y-2">
+                <div className="text-4xl xl:text-5xl font-black font-syne text-white tracking-tighter uppercase italic">48H</div>
+                <div className="text-[10px] font-black uppercase tracking-[0.3em] text-vault-faint">Safety Timelock</div>
               </div>
             </div>
           </div>
