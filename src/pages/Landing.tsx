@@ -13,7 +13,6 @@ const Landing: React.FC = () => {
   const { isConnected } = useAccount()
   const navigate = useNavigate()
   const [stats, setStats] = useState({ tvl: 0n, apy: 0n, proposals: 0 })
-  const [loading, setLoading] = useState(true)
 
   // Auto-redirect if wallet is connected
   useEffect(() => {
@@ -51,8 +50,6 @@ const Landing: React.FC = () => {
       } catch (e) {
         console.warn("Failed to fetch landing stats from chain, using mocks", e)
         setStats({ tvl: 1420500n * 10n ** 18n, apy: 810n, proposals: 12 })
-      } finally {
-        setLoading(false)
       }
     }
 
