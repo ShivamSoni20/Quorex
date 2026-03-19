@@ -8,6 +8,7 @@ import { getAddresses } from '../constants/addresses'
 import { polkadotHubTestnet } from '../constants/chains'
 import { formatDOT, formatAPY } from '../utils/format'
 import { ConnectWallet } from '../components/shared/ConnectWallet'
+import { Navbar } from '../components/layout/Navbar'
 
 const Landing: React.FC = () => {
   const { isConnected } = useAccount()
@@ -60,6 +61,9 @@ const Landing: React.FC = () => {
 
   return (
     <div className="bg-vault-bg text-vault-text font-sans overflow-x-hidden min-h-screen">
+      {/* Navbar */}
+      <Navbar />
+
       {/* Dynamic Cyber Background */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_20%,_#22d3ee15_0%,_transparent_40%)]"></div>
@@ -67,11 +71,11 @@ const Landing: React.FC = () => {
         <div className="h-full w-full opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] blend-overlay"></div>
       </div>
 
-      {/* Section 1: Asymmetric Hero */}
-      <section className="relative pt-32 pb-20 px-4 md:px-8 lg:px-16 z-10">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 md:gap-24">
+      {/* Section 1: Hero */}
+      <section className="relative pt-28 md:pt-36 pb-20 px-4 md:px-8 lg:px-16 z-10">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
            {/* Left: Floating UI Preview */}
-           <div className="w-full lg:w-1/2 order-2 lg:order-1 animate-in slide-in-from-left-12 duration-1000">
+           <div className="w-full lg:w-5/12 order-2 lg:order-1 animate-fade-up" style={{animationDelay: '0.2s'}}>
               <div className="relative group">
                  <div className="absolute -inset-1 bg-gradient-to-r from-vault-purple to-vault-teal rounded-[40px] blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
                  <div className="relative bg-vault-bg2 border border-white/10 rounded-[40px] p-8 backdrop-blur-3xl shadow-2xl">
@@ -106,28 +110,26 @@ const Landing: React.FC = () => {
            </div>
 
            {/* Right: Copy & CTA */}
-           <div className="w-full lg:w-1/2 space-y-8 order-1 lg:order-2 animate-in slide-in-from-right-12 duration-1000">
-              <h1 className="text-6xl md:text-8xl font-black font-syne tracking-tighter leading-[0.85] text-white">
+           <div className="w-full lg:w-7/12 space-y-6 order-1 lg:order-2 animate-fade-up" style={{animationDelay: '0.4s'}}>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black font-syne tracking-tighter leading-[1.1] text-white">
                  THE VAULT <br/>
                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-vault-purple via-white to-vault-teal animate-gradient bg-[length:200%_auto]">STANDARD.</span>
               </h1>
               
-              <p className="text-vault-muted text-xl md:text-2xl max-w-xl leading-relaxed font-medium">
+              <p className="text-vault-muted text-base sm:text-lg lg:text-xl max-w-lg leading-relaxed font-medium">
                  The first decentralised yield engine where <span className="text-white">smart contract consensus</span> replaces trust in admins. Un-ruggable by design.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex flex-wrap items-center gap-6 pt-6">
                   {isConnected ? (
                     <Link to="/app" className="px-10 py-5 bg-white text-black font-black uppercase tracking-tighter rounded-full hover:bg-vault-teal transition-all flex items-center justify-center gap-3 group">
                        Enter Protocol
                        <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                     </Link>
                   ) : (
-                    <div className="scale-125 origin-left">
-                      <ConnectWallet />
-                    </div>
+                    <ConnectWallet />
                   )}
-                  <a href="https://github.com/ShivamSoni20/Quorex" target="_blank" rel="noopener noreferrer" className="px-10 py-5 border border-white/20 text-white font-bold rounded-full hover:bg-white/5 transition-all text-center">
+                  <a href="https://github.com/ShivamSoni20/Quorex" target="_blank" rel="noopener noreferrer" className="px-10 py-5 border border-white/20 text-white font-bold rounded-full hover:bg-white/5 transition-all text-center whitespace-nowrap">
                      Explore Source
                   </a>
               </div>
@@ -136,10 +138,10 @@ const Landing: React.FC = () => {
       </section>
 
       {/* Section 2: Bento Grid Features */}
-      <section className="py-20 px-4 md:px-16 lg:px-24">
-         <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-black font-syne text-white mb-16 tracking-tighter">Engineered for Certainty.</h2>
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
+      <section className="py-20 lg:py-28 px-4 md:px-8 lg:px-16 relative z-10">
+         <div className="max-w-7xl mx-auto animate-fade-up" style={{animationDelay: '0.1s'}}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black font-syne text-white mb-16 tracking-tighter uppercase italic leading-none">Engineered <br className="hidden sm:block"/> for Certainty.</h2>
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-5 h-auto md:h-[550px]">
                {/* Large Card: The Problem */}
                <div className="md:col-span-8 bg-vault-bg2 border border-white/5 rounded-[48px] p-12 flex flex-col justify-between group overflow-hidden relative">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-vault-red/10 blur-[80px] -mr-32 -mt-32"></div>
@@ -156,11 +158,11 @@ const Landing: React.FC = () => {
                </div>
 
                {/* Right Card: The Solution */}
-               <div className="md:col-span-4 bg-vault-teal border border-vault-teal rounded-[48px] p-10 flex flex-col justify-end group">
+               <div className="md:col-span-4 bg-vault-teal border border-vault-teal rounded-[48px] p-10 flex flex-col justify-end group shadow-[0_20px_60px_-15px_rgba(163,230,53,0.3)]">
                   <div className="text-black space-y-4">
-                     <h3 className="text-3xl font-black font-syne leading-none">THE CODE IS <br/> THE LAW.</h3>
+                     <h3 className="text-3xl font-black font-syne leading-none uppercase italic">The Code is <br/> the Law.</h3>
                      <p className="text-sm font-bold opacity-70 leading-relaxed uppercase tracking-tight">
-                        No admin key exists. Strategy changes only happen after a DAO vote passes and a 48-hour timelock clears. Enforced by contract logic.
+                        No admin key exists. All strategy changes are enforced by contract logic after DAO consensus.
                      </p>
                   </div>
                </div>
@@ -186,76 +188,81 @@ const Landing: React.FC = () => {
       </section>
 
       {/* Section 3: Protocol Lifecycle */}
-      <section className="py-24 px-4 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-6xl font-black font-syne text-white mb-20 tracking-tighter text-left uppercase italic">Protocol Lifecycle.</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <section className="py-20 lg:py-28 px-4 md:px-8 lg:px-16 relative overflow-hidden z-20">
+        <div className="max-w-7xl mx-auto animate-fade-up" style={{animationDelay: '0.1s'}}>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+             <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black font-syne text-white tracking-tighter uppercase italic leading-none">Protocol <br/> Lifecycle.</h2>
+             <p className="text-vault-muted text-xs font-black uppercase tracking-[0.3em] pb-2">Institutional-Grade Workflow</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
              {[
-               { id: '01', t: "Deposit DOT", b: "Enter the vault with native DOT. Receive QX shares instantly.", color: "from-vault-purple to-indigo-600" },
-               { id: '02', t: "AI Governance", b: "Vote with real-time AI risk analysis on every strategy rotation.", color: "from-vault-teal to-emerald-600" },
-               { id: '03', t: "48h Timelock", b: "Safety first. Every parameter change waits 48h in timelock.", color: "from-vault-amber to-orange-600" },
-               { id: '04', t: "Yield Accrual", b: "Assets are routed to Polkadot Hub strategies for optimized yield.", color: "from-vault-purple to-pink-600" }
-             ].map((step, idx) => (
-                <div key={step.id} className={`group relative p-8 bg-vault-bg2 border border-white/5 rounded-[40px] hover:bg-white/[0.02] transition-all duration-500 overflow-hidden ${idx % 2 !== 0 ? 'md:mt-12' : ''}`}>
-                   <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-10 blur-2xl transition-opacity`}></div>
-                   <div className="text-5xl font-mono font-black text-white/5 group-hover:text-white/10 transition-colors mb-6">{step.id}</div>
-                   <h4 className="text-xl font-black font-syne text-white mb-4 uppercase tracking-tight">{step.t}</h4>
-                   <p className="text-vault-muted text-xs font-bold leading-relaxed uppercase tracking-widest">{step.b}</p>
+               { id: '01', t: "Deposit DOT", b: "Enter the vault with native DOT. Receive QX shares instantly.", color: "from-vault-purple/20 to-transparent" },
+               { id: '02', t: "AI Governance", b: "Vote with real-time AI risk analysis on every strategy rotation.", color: "from-vault-teal/20 to-transparent" },
+               { id: '03', t: "48h Timelock", b: "Safety first. Every parameter change waits 48h in timelock.", color: "from-vault-amber/20 to-transparent" },
+               { id: '04', t: "Yield Accrual", b: "Assets are routed to Polkadot Hub for optimized yield flow.", color: "from-vault-purple/20 to-transparent" }
+             ].map((step) => (
+                <div key={step.id} className="group relative p-10 bg-vault-bg2 border border-white/5 rounded-[48px] hover:border-white/10 transition-all duration-500 overflow-hidden">
+                   <div className={`absolute -inset-2 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-100 transition-opacity blur-2xl`}></div>
+                   <div className="text-4xl font-mono font-black text-vault-purple mb-8 relative z-10">{step.id}</div>
+                   <h4 className="text-xl font-black font-syne text-white mb-4 uppercase tracking-tight relative z-10">{step.t}</h4>
+                   <p className="text-vault-muted text-xs font-bold leading-relaxed uppercase tracking-widest relative z-10">{step.b}</p>
                 </div>
              ))}
           </div>
         </div>
       </section>
 
-      {/* Section 6: Hackathon Context */}
-      <section className="py-24 px-4 overflow-hidden">
-        <div className="max-w-7xl mx-auto relative">
-           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-vault-purple/10 blur-[150px] -mr-64 -mt-64"></div>
-           <div className="bg-vault-bg2 border border-white/5 p-12 md:p-24 rounded-[64px] relative overflow-hidden group">
+      {/* Section 4: Hackathon Context */}
+      <section className="py-20 lg:py-28 px-4 md:px-8 lg:px-16 overflow-hidden relative z-10">
+        <div className="max-w-7xl mx-auto animate-fade-up" style={{animationDelay: '0.1s'}}>
+           <div className="bg-vault-bg2 border border-white/5 p-10 md:p-16 lg:p-20 rounded-[40px] md:rounded-[64px] relative overflow-hidden group shadow-2xl animate-glow">
               <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-vault-purple to-transparent opacity-50"></div>
+              <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-vault-purple/5 blur-[120px] rounded-full"></div>
               
-              <div className="relative z-10 max-w-4xl">
-                 <h2 className="text-4xl md:text-7xl font-black font-syne mb-6 tracking-tighter text-white uppercase italic leading-none">
+              <div className="relative z-10">
+                 <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black font-syne mb-6 tracking-tighter text-white uppercase italic leading-[1.05]">
                     Built for <br/> 
-                    <span className="text-vault-purple italic">Hackathon 2026.</span>
+                    <span className="text-vault-purple">Hackathon 2026.</span>
                  </h2>
-                 <p className="text-vault-muted mb-12 font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs">
-                    Competing for the EVM Track + OpenZeppelin Security Bounty ($1,000)
+                 <p className="text-vault-muted mb-12 font-black uppercase tracking-[0.4em] text-[10px] md:text-sm">
+                    EVM Smart Contract · OpenZeppelin Security Track
                  </p>
                  
                  <div className="flex flex-wrap justify-start gap-4">
                     {['EVM Solidity', 'Security First', 'Polkadot Hub', 'Open Source'].map(tag => (
-                      <span key={tag} className="px-8 py-3 bg-white/5 text-white border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest hover:border-vault-purple transition-all cursor-crosshair">
+                      <span key={tag} className="px-8 py-3 bg-white/5 text-white border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-vault-purple hover:text-black transition-all duration-300">
                          {tag}
                       </span>
                     ))}
                  </div>
-              </div>
-
-              <div className="absolute right-0 bottom-0 opacity-[0.03] text-[15rem] leading-none font-black font-syne tracking-tighter -mr-10 -mb-10 pointer-events-none uppercase">
-                 QX
               </div>
            </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-16 px-4 border-t border-vault-border bg-vault-bg text-sm">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-           <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-vault-purple rounded-lg flex items-center justify-center font-bold text-white shadow-lg">QX</div>
-              <span className="font-syne font-bold text-lg">Quorex</span>
+      <footer className="py-16 px-4 md:px-8 lg:px-16 mt-8 border-t border-white/5 bg-vault-bg text-sm relative z-20">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
+           <div className="space-y-6">
+              <div className="flex items-center gap-3">
+                 <div className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center font-black text-xs shadow-lg">QX</div>
+                 <span className="font-syne font-black text-2xl tracking-tighter text-white uppercase">Quorex</span>
+              </div>
+              <p className="text-vault-muted text-xs font-bold uppercase tracking-[0.2em] max-w-sm leading-relaxed">
+                 The first decentralised yield engine where smart contract consensus replaces trust. 2026.
+              </p>
            </div>
            
-           <div className="flex flex-wrap justify-center gap-8 text-vault-muted font-bold text-[10px] uppercase tracking-widest">
-              <Link to="/app" className="hover:text-vault-purple transition-colors">Dashboard</Link>
-              <Link to="/app/governance" className="hover:text-vault-purple transition-colors">Governance</Link>
-              <a href="https://github.com/ShivamSoni20/Quorex" className="hover:text-vault-purple transition-colors">GitHub</a>
-           </div>
-
-           <div className="text-right text-vault-faint text-[10px] uppercase tracking-widest">
-              Polkadot Solidity Hackathon 2026<br/>
-              Open-source. MIT License.
+           <div className="flex flex-col gap-4 text-left md:text-right">
+              <div className="flex flex-wrap gap-8 text-vault-muted font-black text-[10px] uppercase tracking-widest mb-4">
+                 <Link to="/app" className="hover:text-white transition-colors">Dashboard</Link>
+                 <Link to="/app/governance" className="hover:text-white transition-colors">Governance</Link>
+                 <a href="https://github.com/ShivamSoni20/Quorex" className="hover:text-white transition-colors">GitHub</a>
+              </div>
+              <div className="text-vault-faint text-[10px] font-bold uppercase tracking-[0.3em]">
+                 Polkadot Solidity Hackathon 2026<br/>
+                 Open-source. MIT License.
+              </div>
            </div>
         </div>
       </footer>
