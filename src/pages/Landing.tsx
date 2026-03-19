@@ -185,21 +185,22 @@ const Landing: React.FC = () => {
          </div>
       </section>
 
-      {/* Section 3: How It Works */}
+      {/* Section 3: Protocol Lifecycle */}
       <section className="py-24 px-4 relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black font-syne text-white mb-16 tracking-tighter text-left">How It Works</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+          <h2 className="text-4xl md:text-6xl font-black font-syne text-white mb-20 tracking-tighter text-left uppercase italic">Protocol Lifecycle.</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
              {[
-               { id: '01', t: "Deposit DOT", b: "Deposit DOT into the vault. Receive vault shares and VAULT governance tokens proportional to your deposit." },
-               { id: '02', t: "Vote with AI Insights", b: "Use your VAULT tokens to vote on proposals. Leverage integrated AI-powered risk and yield analysis for informed governance." },
-                { id: '03', t: "48-Hour Timelock", b: "Approved changes are queued in the TimelockController. The 48-hour delay is enforced by the smart contract." },
-                { id: '04', t: "XCM Bridge Ready", b: "Deposit from any parachain via Asset Hub. Quorex is pre-architected for Polkadot's cross-chain ecosystem." }
-             ].map((step) => (
-                <div key={step.id} className="space-y-4 group">
-                   <span className="text-4xl font-mono font-bold text-vault-purple group-hover:text-vault-teal transition-colors opacity-40 group-hover:opacity-100">{step.id}</span>
-                   <h4 className="text-lg font-bold">{step.t}</h4>
-                   <p className="text-vault-muted text-sm leading-relaxed">{step.b}</p>
+               { id: '01', t: "Deposit DOT", b: "Enter the vault with native DOT. Receive QX shares instantly.", color: "from-vault-purple to-indigo-600" },
+               { id: '02', t: "AI Governance", b: "Vote with real-time AI risk analysis on every strategy rotation.", color: "from-vault-teal to-emerald-600" },
+               { id: '03', t: "48h Timelock", b: "Safety first. Every parameter change waits 48h in timelock.", color: "from-vault-amber to-orange-600" },
+               { id: '04', t: "Yield Accrual", b: "Assets are routed to Polkadot Hub strategies for optimized yield.", color: "from-vault-purple to-pink-600" }
+             ].map((step, idx) => (
+                <div key={step.id} className={`group relative p-8 bg-vault-bg2 border border-white/5 rounded-[40px] hover:bg-white/[0.02] transition-all duration-500 overflow-hidden ${idx % 2 !== 0 ? 'md:mt-12' : ''}`}>
+                   <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-10 blur-2xl transition-opacity`}></div>
+                   <div className="text-5xl font-mono font-black text-white/5 group-hover:text-white/10 transition-colors mb-6">{step.id}</div>
+                   <h4 className="text-xl font-black font-syne text-white mb-4 uppercase tracking-tight">{step.t}</h4>
+                   <p className="text-vault-muted text-xs font-bold leading-relaxed uppercase tracking-widest">{step.b}</p>
                 </div>
              ))}
           </div>
@@ -207,15 +208,33 @@ const Landing: React.FC = () => {
       </section>
 
       {/* Section 6: Hackathon Context */}
-      <section className="py-24 px-4">
-        <div className="max-w-7xl mx-auto text-left border-l-4 border-vault-purple bg-vault-purple/5 p-12 md:p-20 rounded-r-[48px]">
-           <h2 className="text-3xl md:text-5xl font-black font-syne mb-4 tracking-tighter text-white uppercase italic">Hackathon 2026</h2>
-           <p className="text-vault-muted mb-10 font-bold uppercase tracking-widest text-xs">Competing in the EVM Smart Contract Track + OpenZeppelin Sponsor Track ($1,000 bounty)</p>
-           
-           <div className="flex flex-wrap justify-start gap-4">
-              {['EVM Track', 'OZ Sponsor Track', 'Polkadot Hub', 'Open Source'].map(tag => (
-                <span key={tag} className="px-6 py-2 bg-vault-purple/10 text-vault-purple border border-white/5 rounded-full text-[10px] font-black uppercase tracking-widest">{tag}</span>
-              ))}
+      <section className="py-24 px-4 overflow-hidden">
+        <div className="max-w-7xl mx-auto relative">
+           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-vault-purple/10 blur-[150px] -mr-64 -mt-64"></div>
+           <div className="bg-vault-bg2 border border-white/5 p-12 md:p-24 rounded-[64px] relative overflow-hidden group">
+              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-vault-purple to-transparent opacity-50"></div>
+              
+              <div className="relative z-10 max-w-4xl">
+                 <h2 className="text-4xl md:text-7xl font-black font-syne mb-6 tracking-tighter text-white uppercase italic leading-none">
+                    Built for <br/> 
+                    <span className="text-vault-purple italic">Hackathon 2026.</span>
+                 </h2>
+                 <p className="text-vault-muted mb-12 font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs">
+                    Competing for the EVM Track + OpenZeppelin Security Bounty ($1,000)
+                 </p>
+                 
+                 <div className="flex flex-wrap justify-start gap-4">
+                    {['EVM Solidity', 'Security First', 'Polkadot Hub', 'Open Source'].map(tag => (
+                      <span key={tag} className="px-8 py-3 bg-white/5 text-white border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest hover:border-vault-purple transition-all cursor-crosshair">
+                         {tag}
+                      </span>
+                    ))}
+                 </div>
+              </div>
+
+              <div className="absolute right-0 bottom-0 opacity-[0.03] text-[15rem] leading-none font-black font-syne tracking-tighter -mr-10 -mb-10 pointer-events-none uppercase">
+                 QX
+              </div>
            </div>
         </div>
       </section>
