@@ -6,7 +6,8 @@ import { GovernedVaultABI } from '../abis/GovernedVault.abi'
 import { IStrategyABI } from '../abis/IStrategy.abi'
 import { getAddresses } from '../constants/addresses'
 import { polkadotHubTestnet } from '../constants/chains'
-import { formatDOT, formatAPY } from '../utils/format'
+import { formatAPY } from '../utils/format'
+import { formatUnits } from 'viem'
 import { ConnectWallet } from '../components/shared/ConnectWallet'
 import { Navbar } from '../components/layout/Navbar'
 
@@ -58,6 +59,14 @@ const Landing: React.FC = () => {
     return () => clearInterval(interval)
   }, [addresses])
 
+  // Compact TVL formatter for hero stats
+  const formatCompactTVL = (val: bigint) => {
+    const num = Number(formatUnits(val, 18))
+    if (num >= 1_000_000) return `${(num / 1_000_000).toFixed(1)}M`
+    if (num >= 1_000) return `${(num / 1_000).toFixed(0)}K`
+    return num.toFixed(0)
+  }
+
   return (
     <div className="mesh-bg text-vault-text font-sans selection:bg-vault-indigo/30 min-h-screen overflow-x-hidden">
       <Navbar />
@@ -105,7 +114,7 @@ const Landing: React.FC = () => {
                 <div className="text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] text-vault-faint">Optimized APY</div>
               </div>
               <div className="space-y-1">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-black font-syne text-white tracking-tighter uppercase italic">{formatDOT(stats.tvl)}</div>
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-black font-syne text-white tracking-tighter uppercase italic">{formatCompactTVL(stats.tvl)}</div>
                 <div className="text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] text-vault-faint">Protocol TVL</div>
               </div>
               <div className="space-y-1">
