@@ -63,101 +63,101 @@ const Landing: React.FC = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative pt-40 pb-32 px-6 lg:px-12 max-w-[1440px] mx-auto overflow-visible">
+      <section className="relative pt-28 sm:pt-36 pb-20 px-4 sm:px-6 lg:px-10 max-w-[1400px] mx-auto overflow-hidden lg:overflow-visible">
         {/* Dynamic Background Elements */}
-        <div className="absolute top-0 right-[-10%] w-[500px] h-[500px] bg-vault-cyan/10 blur-[150px] animate-pulse-slow"></div>
-        <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-vault-indigo/10 blur-[180px] animate-pulse-slow" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-0 right-[-10%] w-[400px] h-[400px] bg-vault-cyan/10 blur-[120px] animate-pulse-slow"></div>
+        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-vault-indigo/10 blur-[150px] animate-pulse-slow" style={{animationDelay: '2s'}}></div>
 
-        <div className="flex flex-col lg:flex-row items-center gap-20 lg:gap-32 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 relative z-10">
           {/* Hero Content */}
-          <div className="w-full lg:w-3/5 space-y-10 order-2 lg:order-1">
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full glass border border-white/10 text-[10px] font-black uppercase tracking-[0.3em] text-vault-cyan shadow-xl">
-              <span className="w-2 h-2 rounded-full bg-vault-cyan animate-pulse"></span>
+          <div className="w-full lg:w-3/5 space-y-8 order-2 lg:order-1">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass border border-white/10 text-[9px] font-black uppercase tracking-[0.25em] text-vault-cyan shadow-xl">
+              <span className="w-1.5 h-1.5 rounded-full bg-vault-cyan animate-pulse"></span>
               Polkadot Solidity Hackathon 2026
             </div>
 
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-black font-syne tracking-tighter leading-[0.95] text-white uppercase italic">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black font-syne tracking-tighter leading-[0.95] text-white uppercase italic">
               Governed <br />
               <span className="text-gradient-cyan">Vault.</span>
             </h1>
 
-            <p className="text-vault-muted text-xl sm:text-2xl max-w-2xl leading-relaxed font-light">
+            <p className="text-vault-muted text-base sm:text-lg lg:text-xl max-w-xl leading-relaxed font-light">
               Experience the pinnacle of <span className="text-white font-medium">decentralised yield.</span> High-efficiency aggregation secured by PVM-native safety and AI consensus.
             </p>
 
-            <div className="flex flex-wrap items-center gap-8 pt-6">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-4">
               {isConnected ? (
-                <Link to="/app" className="px-14 py-6 bg-white text-black font-black uppercase tracking-[0.1em] rounded-2xl hover:bg-vault-cyan transition-all flex items-center gap-3 shadow-[0_20px_40px_rgba(255,255,255,0.1)] group">
+                <Link to="/app" className="px-8 sm:px-10 py-4 sm:py-5 bg-white text-black font-black uppercase tracking-[0.1em] rounded-2xl hover:bg-vault-cyan transition-all flex items-center gap-2 shadow-[0_20px_40px_rgba(255,255,255,0.1)] group text-sm">
                   Enter Command Center
-                  <svg className="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  <svg className="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                 </Link>
               ) : (
                 <ConnectWallet />
               )}
-              <a href="https://github.com/ShivamSoni20/GovernedVault" target="_blank" rel="noopener noreferrer" className="px-12 py-6 glass border border-white/10 text-white font-bold rounded-2xl hover:bg-white/5 transition-all text-sm uppercase tracking-widest">
+              <a href="https://github.com/ShivamSoni20/GovernedVault" target="_blank" rel="noopener noreferrer" className="px-8 sm:px-10 py-4 sm:py-5 glass border border-white/10 text-white font-bold rounded-2xl hover:bg-white/5 transition-all text-xs uppercase tracking-widest">
                 Source Code
               </a>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 pt-16 border-t border-white/5">
-              <div className="space-y-2">
-                <div className="text-4xl xl:text-5xl font-black font-syne text-white tracking-tighter uppercase italic">{formatAPY(stats.apy)}</div>
-                <div className="text-[10px] font-black uppercase tracking-[0.3em] text-vault-faint">Optimized APY</div>
+            <div className="grid grid-cols-3 gap-4 sm:gap-8 pt-10 border-t border-white/5">
+              <div className="space-y-1">
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-black font-syne text-white tracking-tighter uppercase italic">{formatAPY(stats.apy)}</div>
+                <div className="text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] text-vault-faint">Optimized APY</div>
               </div>
-              <div className="space-y-2">
-                <div className="text-4xl xl:text-5xl font-black font-syne text-white tracking-tighter uppercase italic">{formatDOT(stats.tvl).split('.')[0]}M+</div>
-                <div className="text-[10px] font-black uppercase tracking-[0.4em] text-vault-faint">Protocol TVL</div>
+              <div className="space-y-1">
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-black font-syne text-white tracking-tighter uppercase italic">{formatDOT(stats.tvl)}</div>
+                <div className="text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] text-vault-faint">Protocol TVL</div>
               </div>
-              <div className="space-y-2">
-                <div className="text-4xl xl:text-5xl font-black font-syne text-white tracking-tighter uppercase italic">48H</div>
-                <div className="text-[10px] font-black uppercase tracking-[0.3em] text-vault-faint">Safety Timelock</div>
+              <div className="space-y-1">
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-black font-syne text-white tracking-tighter uppercase italic">48H</div>
+                <div className="text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] text-vault-faint">Safety Timelock</div>
               </div>
             </div>
           </div>
 
           {/* Hero Visual */}
           <div className="w-full lg:w-2/5 order-1 lg:order-2 flex justify-center lg:justify-end">
-            <div className="relative group animate-float">
+            <div className="relative group animate-float w-full max-w-[340px] lg:max-w-[360px]">
               {/* Outer Glows */}
-              <div className="absolute -inset-10 bg-vault-cyan/10 rounded-full blur-[100px] group-hover:bg-vault-cyan/20 transition-all duration-1000"></div>
+              <div className="absolute -inset-8 bg-vault-cyan/10 rounded-full blur-[80px] group-hover:bg-vault-cyan/20 transition-all duration-1000"></div>
               
               {/* Main Card */}
-              <div className="relative glass-card rounded-[64px] p-10 w-full max-w-[450px] rotate-2 group-hover:rotate-0 transition-all duration-700 shadow-2xl">
-                <div className="flex items-center justify-between mb-10">
-                  <div className="flex gap-2.5">
-                    <div className="w-3.5 h-3.5 rounded-full bg-vault-rose/40"></div>
-                    <div className="w-3.5 h-3.5 rounded-full bg-vault-cyan/40"></div>
-                    <div className="w-3.5 h-3.5 rounded-full bg-vault-emerald/40"></div>
+              <div className="relative glass-card rounded-3xl sm:rounded-[48px] p-6 sm:p-8 w-full rotate-2 group-hover:rotate-0 transition-all duration-700 shadow-2xl">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex gap-2">
+                    <div className="w-3 h-3 rounded-full bg-vault-rose/40"></div>
+                    <div className="w-3 h-3 rounded-full bg-vault-cyan/40"></div>
+                    <div className="w-3 h-3 rounded-full bg-vault-emerald/40"></div>
                   </div>
-                  <div className="px-4 py-1.5 glass rounded-2xl text-[10px] font-black tracking-widest text-vault-cyan uppercase">System: Secure</div>
+                  <div className="px-3 py-1 glass rounded-xl text-[8px] font-black tracking-widest text-vault-cyan uppercase">System: Secure</div>
                 </div>
 
-                <div className="space-y-8">
-                  <div className="p-8 rounded-[40px] bg-white/5 border border-white/5 group-hover:border-white/10 transition-colors">
-                    <div className="text-[10px] font-black uppercase tracking-[0.3em] text-vault-faint mb-4">Real-time Yield</div>
-                    <div className="text-5xl font-black font-syne text-white">{formatAPY(stats.apy)}</div>
-                    <div className="mt-4 flex items-center gap-2 text-[10px] font-bold text-vault-emerald uppercase">
+                <div className="space-y-5">
+                  <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/5 border border-white/5 group-hover:border-white/10 transition-colors">
+                    <div className="text-[9px] font-black uppercase tracking-[0.25em] text-vault-faint mb-3">Real-time Yield</div>
+                    <div className="text-4xl sm:text-5xl font-black font-syne text-white">{formatAPY(stats.apy)}</div>
+                    <div className="mt-3 flex items-center gap-2 text-[9px] font-bold text-vault-emerald uppercase">
                       <span className="w-1.5 h-1.5 rounded-full bg-vault-emerald animate-ping"></span>
                       Aggregating from 4 Strategies
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-6">
-                    <div className="glass p-6 rounded-3xl border border-white/5">
-                      <div className="text-[9px] font-black uppercase tracking-widest text-vault-faint mb-2">Network</div>
-                      <div className="text-lg font-bold text-white uppercase tracking-tighter">Polkadot</div>
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                    <div className="glass p-4 rounded-2xl border border-white/5">
+                      <div className="text-[8px] font-black uppercase tracking-widest text-vault-faint mb-1">Network</div>
+                      <div className="text-sm sm:text-base font-bold text-white uppercase tracking-tighter">Polkadot</div>
                     </div>
-                    <div className="glass p-6 rounded-3xl border border-white/5">
-                      <div className="text-[9px] font-black uppercase tracking-widest text-vault-faint mb-2">Vault Stat</div>
-                      <div className="text-lg font-bold text-white uppercase tracking-tighter">Active</div>
+                    <div className="glass p-4 rounded-2xl border border-white/5">
+                      <div className="text-[8px] font-black uppercase tracking-widest text-vault-faint mb-1">Vault Stat</div>
+                      <div className="text-sm sm:text-base font-bold text-white uppercase tracking-tighter">Active</div>
                     </div>
                   </div>
                 </div>
 
-                {/* Floating Elements */}
-                <div className="absolute -top-12 -right-12 glass shadow-2xl rounded-3xl p-6 border border-white/10 animate-float" style={{animationDelay: '1s'}}>
-                  <div className="w-10 h-10 bg-white text-black rounded-xl flex items-center justify-center font-black text-xs mb-3">AI</div>
-                  <div className="text-[10px] font-black uppercase tracking-widest">Risk Analysis</div>
+                {/* Floating AI Badge */}
+                <div className="absolute -top-8 -right-8 sm:-top-10 sm:-right-10 glass shadow-2xl rounded-2xl p-4 border border-white/10 animate-float" style={{animationDelay: '1s'}}>
+                  <div className="w-8 h-8 bg-white text-black rounded-lg flex items-center justify-center font-black text-[10px] mb-2">AI</div>
+                  <div className="text-[8px] font-black uppercase tracking-widest">Risk Analysis</div>
                 </div>
               </div>
             </div>
