@@ -26,7 +26,7 @@ export const Navbar: React.FC = () => {
               <div className="w-11 h-11 rounded-2xl bg-white text-black flex items-center justify-center font-black text-sm shadow-[0_0_25px_rgba(255,255,255,0.3)] rotate-3 hover:rotate-0 transition-transform">
                 QX
               </div>
-              <span className="text-2xl font-black tracking-tight text-white font-syne uppercase">Quorex</span>
+              <span className="text-2xl font-bold tracking-tight text-white font-syne uppercase">Quorex</span>
             </Link>
 
             <div className="hidden md:flex items-center gap-1 bg-white/5 p-1.5 rounded-2xl border border-white/5">
@@ -34,7 +34,7 @@ export const Navbar: React.FC = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`px-8 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-[0.15em] transition-all duration-300 ${
+                  className={`px-8 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-300 ${
                     location.pathname === item.path
                       ? 'text-black bg-white shadow-lg'
                       : 'text-vault-muted hover:text-white hover:bg-white/5'

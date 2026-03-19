@@ -44,7 +44,7 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({ proposal }) => {
         <span className="text-vault-faint text-[8px] font-mono font-black tracking-widest uppercase">ID: {proposal.proposalId.toString().slice(0, 8)}</span>
       </div>
 
-      <h4 className="text-base sm:text-lg font-black font-syne text-white mb-4 group-hover:text-vault-cyan transition-colors leading-tight relative z-10 uppercase italic tracking-tighter">
+      <h4 className="text-base sm:text-lg font-bold font-syne text-white mb-4 group-hover:text-vault-cyan transition-colors leading-tight relative z-10 uppercase tracking-tight">
         {title}{proposal.description.length > 80 ? '...' : ''}
       </h4>
       

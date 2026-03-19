@@ -22,7 +22,7 @@ export const UserPosition: React.FC = () => {
          <div className="space-y-4 min-w-0">
             <div className="flex items-center gap-2">
                <div className="w-1 h-5 bg-vault-purple rounded-full shadow-[0_0_8px_rgba(34,211,238,0.5)]"></div>
-               <h3 className="text-lg sm:text-xl font-black font-syne text-white uppercase tracking-tighter">Asset Custody</h3>
+               <h3 className="text-lg sm:text-xl font-bold font-syne text-white uppercase tracking-tight">Asset Custody</h3>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

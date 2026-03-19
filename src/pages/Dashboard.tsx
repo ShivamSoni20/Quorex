@@ -22,7 +22,7 @@ const Dashboard: React.FC = () => {
                <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-vault-cyan to-transparent opacity-50 animate-glow-line"></div>
                
                <div className="p-6 sm:p-8 pb-4">
-                  <h2 className="text-xl sm:text-2xl font-black font-syne text-white mb-1 uppercase italic tracking-tighter">Terminal</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold font-syne text-white mb-1 uppercase tracking-tight">Terminal</h2>
                   <p className="text-vault-muted text-[9px] font-black uppercase tracking-[0.3em]">Vault Execution Interface</p>
                </div>
 
@@ -69,9 +69,9 @@ const Dashboard: React.FC = () => {
                    <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full glass border border-white/10 text-[8px] font-black uppercase tracking-widest text-vault-cyan">
                       Sector: Polkadot Hub / EVM-1
                    </div>
-                   <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black font-syne text-white tracking-tighter uppercase italic leading-none">Command Center</h1>
+                   <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-syne text-white tracking-tight uppercase leading-none">Command Center</h1>
                    <p className="text-vault-muted text-sm max-w-xl font-light leading-relaxed">
-                      Trustless yield aggregation secured by <span className="text-white font-medium italic">QX DAO consensus</span> and AI-backed safety audits.
+                      Trustless yield aggregation secured by <span className="text-white font-medium">QX DAO consensus</span> and AI-backed safety audits.
                    </p>
                 </div>
                 <div className="flex gap-3">

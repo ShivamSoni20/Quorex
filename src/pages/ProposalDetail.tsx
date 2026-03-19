@@ -79,7 +79,7 @@ const ProposalDetail: React.FC = () => {
                    </div>
                    <span className="text-vault-muted text-[9px] font-mono font-black uppercase tracking-widest bg-white/5 px-3 py-1.5 border border-white/5 rounded-lg">Index: {proposalId}</span>
                 </div>
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black font-syne text-white leading-tight tracking-tighter uppercase italic">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-syne text-white leading-tight tracking-tight uppercase">
                   {proposal.description.split('\n')[0]}
                 </h1>
                 <div className="flex items-center gap-3 text-vault-muted text-[9px] font-black uppercase tracking-widest">
@@ -91,7 +91,7 @@ const ProposalDetail: React.FC = () => {
              {/* Execution Preview */}
              <div className="glass-card rounded-3xl sm:rounded-[40px] p-6 sm:p-8 space-y-6 border-white/10 relative overflow-hidden group">
                 <div className="absolute top-0 right-0 w-48 h-48 bg-vault-indigo/5 blur-[80px] -mr-24 -mt-24 transition-colors group-hover:bg-vault-cyan/5"></div>
-                <h3 className="text-lg sm:text-xl font-black font-syne text-white uppercase italic tracking-tighter border-b border-white/5 pb-3">Execution Protocol</h3>
+                <h3 className="text-lg sm:text-xl font-bold font-syne text-white uppercase tracking-tight border-b border-white/5 pb-3">Execution Protocol</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                    <div className="glass p-4 sm:p-5 rounded-2xl border border-white/5 space-y-2">
                       <p className="text-[8px] font-black text-vault-faint uppercase tracking-[0.2em] italic">Target Authority</p>
@@ -112,7 +112,7 @@ const ProposalDetail: React.FC = () => {
 
              {/* Rationale */}
              <div className="space-y-4">
-                <h3 className="text-lg sm:text-xl font-black font-syne text-white uppercase italic tracking-tighter">Proposition Details</h3>
+                <h3 className="text-lg sm:text-xl font-bold font-syne text-white uppercase tracking-tight">Proposition Details</h3>
                 <div className="text-vault-muted text-sm leading-relaxed whitespace-pre-wrap glass p-6 sm:p-8 rounded-3xl sm:rounded-[40px] border border-white/5 font-light tracking-wider">
                    {proposal.description}
                 </div>
@@ -121,7 +121,7 @@ const ProposalDetail: React.FC = () => {
              {/* AI Insight */}
              <div className="space-y-6">
                 <div className="flex items-center justify-between border-b border-white/5 pb-4">
-                   <h3 className="text-lg sm:text-xl font-black font-syne text-white uppercase italic tracking-tighter flex items-center gap-3">
+                   <h3 className="text-lg sm:text-xl font-bold font-syne text-white uppercase tracking-tight flex items-center gap-3">
                       AI Risk Assessment
                       <span className="animate-pulse w-2 h-2 rounded-full bg-vault-cyan shadow-[0_0_15px_rgba(34,211,238,0.5)]"></span>
                    </h3>
@@ -135,7 +135,7 @@ const ProposalDetail: React.FC = () => {
           <div className="w-full xl:w-[380px] space-y-8 xl:sticky xl:top-28">
              <div className="glass-card rounded-3xl sm:rounded-[40px] p-6 sm:p-8 shadow-2xl relative overflow-hidden group border-white/10">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-vault-indigo/5 blur-3xl -mr-16 -mt-16 group-hover:bg-vault-indigo/10 transition-colors duration-1000"></div>
-                <h3 className="text-lg sm:text-xl font-black mb-6 font-syne text-white uppercase italic tracking-tighter border-b border-white/5 pb-3">Consensus Tally</h3>
+                <h3 className="text-lg sm:text-xl font-bold mb-6 font-syne text-white uppercase tracking-tight border-b border-white/5 pb-3">Consensus Tally</h3>
                 <VoteTally proposalId={proposalId as string} />
                 
                 {state === 1 && (

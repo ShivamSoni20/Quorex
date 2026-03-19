@@ -35,7 +35,7 @@ export const VaultStats: React.FC = () => {
               )}
             </div>
 
-            <div className={`text-xl sm:text-2xl lg:text-3xl font-black font-syne tracking-tighter ${stat.highlight ? 'text-white' : 'text-white/90'}`}>
+            <div className={`text-xl sm:text-2xl lg:text-3xl font-bold font-syne tracking-tight ${stat.highlight ? 'text-white' : 'text-white/90'}`}>
               {vaultLoading || strategyLoading ? (
                  <div className="animate-pulse bg-white/5 h-8 w-24 rounded-xl"></div>
               ) : stat.value}

@@ -11,7 +11,7 @@ export const XCMBridge: React.FC = () => {
 
       <div className="space-y-5 pt-2">
         <div className="space-y-2">
-          <h3 className="text-lg sm:text-xl font-black font-syne flex items-center gap-2 text-white uppercase italic tracking-tighter">
+          <h3 className="text-lg sm:text-xl font-bold font-syne flex items-center gap-2 text-white uppercase tracking-tight">
              XCM Transit
              <svg className="w-4 h-4 text-vault-indigo animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
           </h3>

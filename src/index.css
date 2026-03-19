@@ -49,6 +49,7 @@
   font-family: var(--font-outfit);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
 }
 
@@ -100,6 +101,7 @@ body {
 /* Text Gradients */
 .text-gradient-cyan {
   background: linear-gradient(to right, #22d3ee, #818cf8);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

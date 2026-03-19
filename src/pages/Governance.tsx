@@ -16,9 +16,9 @@ const Governance: React.FC = () => {
             <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full glass border border-white/10 text-[8px] font-black uppercase tracking-widest text-vault-cyan">
                Network Consensus: Track 1 Active
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black font-syne text-white tracking-tighter uppercase italic leading-none">Protocol Governance</h1>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold font-syne text-white tracking-tight uppercase leading-none">Protocol Governance</h1>
             <p className="text-vault-muted text-sm max-w-xl font-light uppercase tracking-wider leading-relaxed">
-               QX DAO delegates power to code. Strategy rotations and parameter updates require <span className="text-white font-black italic">Consensus</span>.
+               QX DAO delegates power to code. Strategy rotations and parameter updates require <span className="text-white font-bold">Consensus</span>.
             </p>
           </div>
           
@@ -37,7 +37,7 @@ const Governance: React.FC = () => {
                 <button
                   key={tab}
                   onClick={() => setFilter(tab as any)}
-                  className={`px-5 sm:px-6 py-3 text-[9px] font-black uppercase tracking-[0.15em] rounded-xl transition-all duration-500 whitespace-nowrap ${
+                  className={`px-5 sm:px-6 py-3 text-[9px] font-bold uppercase tracking-[0.2em] rounded-xl transition-all duration-500 whitespace-nowrap ${
                     filter === tab ? 'text-black bg-white shadow-2xl' : 'text-vault-muted hover:text-white hover:bg-white/5'
                   }`}
                 >

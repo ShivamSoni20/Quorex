@@ -85,7 +85,7 @@ const Landing: React.FC = () => {
               Polkadot Solidity Hackathon 2026
             </div>
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black font-syne tracking-tighter leading-[0.95] text-white uppercase italic">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold font-syne tracking-tight leading-[0.95] text-white uppercase">
               Governed <br />
               <span className="text-gradient-cyan">Vault.</span>
             </h1>
@@ -110,15 +110,15 @@ const Landing: React.FC = () => {
 
             <div className="grid grid-cols-3 gap-4 sm:gap-8 pt-10 border-t border-white/5">
               <div className="space-y-1">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-black font-syne text-white tracking-tighter uppercase italic">{formatAPY(stats.apy)}</div>
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold font-syne text-white tracking-tight uppercase">{formatAPY(stats.apy)}</div>
                 <div className="text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] text-vault-faint">Optimized APY</div>
               </div>
               <div className="space-y-1">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-black font-syne text-white tracking-tighter uppercase italic">{formatCompactTVL(stats.tvl)}</div>
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold font-syne text-white tracking-tight uppercase">{formatCompactTVL(stats.tvl)}</div>
                 <div className="text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] text-vault-faint">Protocol TVL</div>
               </div>
               <div className="space-y-1">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-black font-syne text-white tracking-tighter uppercase italic">48H</div>
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold font-syne text-white tracking-tight uppercase">48H</div>
                 <div className="text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] text-vault-faint">Safety Timelock</div>
               </div>
             </div>
@@ -144,7 +144,7 @@ const Landing: React.FC = () => {
                 <div className="space-y-5">
                   <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/5 border border-white/5 group-hover:border-white/10 transition-colors">
                     <div className="text-[9px] font-black uppercase tracking-[0.25em] text-vault-faint mb-3">Real-time Yield</div>
-                    <div className="text-4xl sm:text-5xl font-black font-syne text-white">{formatAPY(stats.apy)}</div>
+                    <div className="text-4xl sm:text-5xl font-bold font-syne text-white">{formatAPY(stats.apy)}</div>
                     <div className="mt-3 flex items-center gap-2 text-[9px] font-bold text-vault-emerald uppercase">
                       <span className="w-1.5 h-1.5 rounded-full bg-vault-emerald animate-ping"></span>
                       Aggregating from 4 Strategies
