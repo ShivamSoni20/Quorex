@@ -244,7 +244,7 @@ const Landing: React.FC = () => {
             { id: '02', t: "AI Vetting", b: "AI Risk scored strategy proposals ensure optimal risk-adjusted returns.", color: "group-hover:text-vault-indigo" },
             { id: '03', t: "Gov Consensus", b: "QX holders vote on-chain with PVM safety verification layers.", color: "group-hover:text-white" },
             { id: '04', t: "Auto-Yield", b: "Assets routed via Polkadot Hub with real-time tracking.", color: "group-hover:text-vault-emerald" }
-          ].map((step, i) => (
+          ].map((step) => (
             <div key={step.id} className="group relative p-12 glass-card rounded-[48px] overflow-hidden transition-all duration-500 hover:-translate-y-4">
               <div className="text-5xl font-black font-syne text-white/5 group-hover:text-white/10 transition-colors absolute top-8 right-8">{step.id}</div>
               <div className={`text-sm font-black tracking-[0.4em] uppercase mb-12 transition-colors ${step.color}`}>{step.t}</div>
