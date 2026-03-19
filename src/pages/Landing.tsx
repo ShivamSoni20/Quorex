@@ -7,6 +7,7 @@ import { IStrategyABI } from '../abis/IStrategy.abi'
 import { getAddresses } from '../constants/addresses'
 import { polkadotHubTestnet } from '../constants/chains'
 import { formatDOT, formatAPY } from '../utils/format'
+import { ConnectWallet } from '../components/shared/ConnectWallet'
 
 const Landing: React.FC = () => {
   const { isConnected } = useAccount()
@@ -119,13 +120,19 @@ const Landing: React.FC = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                 <Link to="/app" className="px-10 py-5 bg-white text-black font-black uppercase tracking-tighter rounded-full hover:bg-vault-teal transition-all flex items-center justify-center gap-3 group">
-                    Enter Protocol
-                    <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                 </Link>
-                 <a href="https://github.com/ShivamSoni20/Quorex" target="_blank" rel="noopener noreferrer" className="px-10 py-5 border border-white/20 text-white font-bold rounded-full hover:bg-white/5 transition-all text-center">
-                    Explore Source
-                 </a>
+                  {isConnected ? (
+                    <Link to="/app" className="px-10 py-5 bg-white text-black font-black uppercase tracking-tighter rounded-full hover:bg-vault-teal transition-all flex items-center justify-center gap-3 group">
+                       Enter Protocol
+                       <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </Link>
+                  ) : (
+                    <div className="scale-125 origin-left">
+                      <ConnectWallet />
+                    </div>
+                  )}
+                  <a href="https://github.com/ShivamSoni20/Quorex" target="_blank" rel="noopener noreferrer" className="px-10 py-5 border border-white/20 text-white font-bold rounded-full hover:bg-white/5 transition-all text-center">
+                     Explore Source
+                  </a>
               </div>
            </div>
         </div>
@@ -184,7 +191,7 @@ const Landing: React.FC = () => {
       {/* Section 3: How It Works */}
       <section className="py-24 px-4 relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-16 font-syne">How It Works</h2>
+          <h2 className="text-4xl md:text-5xl font-black font-syne text-white mb-16 tracking-tighter text-left">How It Works</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
              {[
                { id: '01', t: "Deposit DOT", b: "Deposit DOT into the vault. Receive vault shares and VAULT governance tokens proportional to your deposit." },
@@ -204,13 +211,13 @@ const Landing: React.FC = () => {
 
       {/* Section 6: Hackathon Context */}
       <section className="py-24 px-4">
-        <div className="max-w-5xl mx-auto text-center border-2 border-dashed border-vault-purple/30 bg-vault-purple/5 rounded-3xl p-12">
-           <h2 className="text-2xl md:text-3xl font-extrabold font-syne mb-2 tracking-tight">Built for the Polkadot Solidity Hackathon 2026</h2>
-           <p className="text-vault-muted mb-8 italic text-sm">Competing in the EVM Smart Contract Track + OpenZeppelin Sponsor Track ($1,000 bounty)</p>
+        <div className="max-w-7xl mx-auto text-left border-l-4 border-vault-purple bg-vault-purple/5 p-12 md:p-20 rounded-r-[48px]">
+           <h2 className="text-3xl md:text-5xl font-black font-syne mb-4 tracking-tighter text-white uppercase italic">Hackathon 2026</h2>
+           <p className="text-vault-muted mb-10 font-bold uppercase tracking-widest text-xs">Competing in the EVM Smart Contract Track + OpenZeppelin Sponsor Track ($1,000 bounty)</p>
            
-           <div className="flex flex-wrap justify-center gap-3">
+           <div className="flex flex-wrap justify-start gap-4">
               {['EVM Track', 'OZ Sponsor Track', 'Polkadot Hub', 'Open Source'].map(tag => (
-                <span key={tag} className="px-4 py-1.5 bg-vault-purple/20 text-vault-purple border border-vault-purple/30 rounded-full text-[10px] font-bold uppercase tracking-widest">{tag}</span>
+                <span key={tag} className="px-6 py-2 bg-vault-purple/10 text-vault-purple border border-white/5 rounded-full text-[10px] font-black uppercase tracking-widest">{tag}</span>
               ))}
            </div>
         </div>

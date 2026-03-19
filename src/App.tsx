@@ -11,7 +11,19 @@ import ProposalDetail from './pages/ProposalDetail'
 import { validateEnv } from './constants/env'
 import { useEffect } from 'react'
 
+import { useAccount } from 'wagmi'
+import { Navigate } from 'react-router-dom'
+
 const queryClient = new QueryClient()
+
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  const { isConnected, isConnecting } = useAccount()
+  
+  if (isConnecting) return null
+  if (!isConnected) return <Navigate to="/" replace />
+  
+  return <>{children}</>
+}
 
 function App() {
   useEffect(() => {
@@ -26,7 +38,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/app/*" element={
-                <>
+                <ProtectedRoute>
                   <Navbar />
                   <main className="flex-grow">
                     <Routes>
@@ -36,8 +48,9 @@ function App() {
                     </Routes>
                   </main>
                   <Footer />
-                </>
+                </ProtectedRoute>
               } />
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </div>
         </Router>
