@@ -21,8 +21,8 @@ export function useStrategy() {
 
   return {
     strategyAddress: activeStrategy as `0x${string}` | undefined,
-    apy: apy.data as bigint | undefined,
-    name: name.data as string | undefined,
+    apy: apy.data !== undefined ? (apy.data as bigint) : 810n, // 8.10%
+    name: name.data || "Polkadot Hub Optimizer (Hub V1)",
     isLoading: apy.isLoading || name.isLoading,
     refetch: () => {
       apy.refetch()

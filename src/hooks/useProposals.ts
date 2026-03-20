@@ -17,24 +17,54 @@ export type ProposalEvent = {
 
 const MOCK_PROPOSALS: ProposalEvent[] = [
   {
-    proposalId: 1n,
-    proposer: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045',
+    proposalId: 1004n,
+    proposer: '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266',
     targets: ['0x0000000000000000000000000000000000000000'],
     values: [0n],
     calldatas: ['0x' as `0x${string}`],
     voteStart: 100n,
     voteEnd: 999999999n,
-    description: 'Rotate to Mock Strategy B (8.1% APY)\n\nThis proposal rotates our active yield strategy from Strategy A to Strategy B to capture higher DOT staking yields available on the Polkadot Hub. Risk assessment is Low.'
+    description: 'BILATERALPROOF: GRANT MINTER RISK_ADMIN RELAY_CALLER TO DEPLOYER FOR BILATERAL A...\n\nThis security-focused proposal grants the Risk Admin role to the main deployer address for the Bilateral A adapter within the PVM security framework.'
   },
   {
-    proposalId: 2n,
-    proposer: '0x1234567890123456789012345678901234567890',
+    proposalId: 1003n,
+    proposer: '0x70997970C51812dc3A010C7d01b50e0d17dc79C8',
     targets: ['0x0000000000000000000000000000000000000000'],
     values: [0n],
     calldatas: ['0x' as `0x${string}`],
     voteStart: 200n,
     voteEnd: 999999999n,
-    description: 'Stabilize Yield with Strategy A\n\nRecent volatility in Polkadot Hub rewards suggests it is safer to revert to Strategy A temporarily. AI analysis indicates a 0.5% lower risk profile for this change.'
+    description: 'INCREASE DOT DEBT CEILING TO 20M PUSD [SEED 2026-03-20T14:35:32Z]\n\nFinancial parameter update to increase the maximum DOT allowed for debt collateral within the Polkadot Hub vaults by 5M tokens.'
+  },
+  {
+    proposalId: 1002n,
+    proposer: '0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC',
+    targets: ['0x0000000000000000000000000000000000000000'],
+    values: [0n],
+    calldatas: ['0x' as `0x${string}`],
+    voteStart: 300n,
+    voteEnd: 999999999n,
+    description: 'V2 REGISTRATION: REGISTER+ACTIVATE MARKET V2, WIRE ROUTER ROLE, SET ORACLE MAXAG...\n\nMigration infrastructure: Registering the V2 market contracts and configuring oracle safety parameters for native Polkadot liquidity.'
+  },
+  {
+    proposalId: 1001n,
+    proposer: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045',
+    targets: ['0x0000000000000000000000000000000000000000'],
+    values: [0n],
+    calldatas: ['0x' as `0x${string}`],
+    voteStart: 400n,
+    voteEnd: 999999999n,
+    description: 'ROTATE TO MOCK STRATEGY B (8.1% APY)\n\nCapturing higher yield opportunities on Polkadot Hub through Strategy B. AI Consensus verified: 98/100 Safety Score.'
+  },
+  {
+    proposalId: 1000n,
+    proposer: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045',
+    targets: ['0x0000000000000000000000000000000000000000'],
+    values: [0n],
+    calldatas: ['0x' as `0x${string}`],
+    voteStart: 500n,
+    voteEnd: 999999999n,
+    description: 'MIGRATION PROOF: WIRE MARKET V2, REGISTER, ACTIVATE, GRANT COORDINATOR ADMIN, OPEN ROUTER...\n\nFinalizing the V2 infrastructure rollout across the GovernedVault ecosystem.'
   }
 ]
 
