@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { useAccount } from 'wagmi'
 import { ConnectWallet } from '../shared/ConnectWallet'
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false)
   const location = useLocation()
+  const { isConnected } = useAccount()
 
   const navItems = [
     { name: 'Dashboard', path: '/app' },
@@ -29,21 +31,23 @@ export const Navbar: React.FC = () => {
               <span className="text-2xl font-bold tracking-tight text-white font-syne uppercase">Quorex</span>
             </Link>
 
-            <div className="hidden md:flex items-center gap-1 bg-white/5 p-1.5 rounded-2xl border border-white/5">
-              {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`px-8 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-300 ${
-                    location.pathname === item.path
-                      ? 'text-black bg-white shadow-lg'
-                      : 'text-vault-muted hover:text-white hover:bg-white/5'
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
+            {isConnected && (
+              <div className="hidden md:flex items-center gap-1 bg-white/5 p-1.5 rounded-2xl border border-white/5">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className={`px-8 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-300 ${
+                      location.pathname === item.path
+                        ? 'text-black bg-white shadow-lg'
+                        : 'text-vault-muted hover:text-white hover:bg-white/5'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="hidden md:flex items-center gap-6">
@@ -69,7 +73,7 @@ export const Navbar: React.FC = () => {
       {isOpen && (
         <div className="md:hidden mt-4 glass rounded-3xl overflow-hidden animate-in fade-in slide-in-from-top-4 duration-300">
            <div className="px-6 py-8 space-y-6">
-              {navItems.map((item) => (
+              {isConnected && navItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
@@ -82,7 +86,7 @@ export const Navbar: React.FC = () => {
                   {item.name}
                 </Link>
               ))}
-              <div className="pt-6 border-t border-white/5">
+              <div className={`${isConnected ? 'pt-6 border-t border-white/5' : ''}`}>
                  <ConnectWallet />
               </div>
            </div>
