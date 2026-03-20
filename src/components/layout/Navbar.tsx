@@ -18,7 +18,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-6xl">
-      <div className="glass rounded-[32px] px-8 py-4 shadow-2xl relative overflow-hidden group">
+      <div className="glass rounded-[32px] px-8 py-4 shadow-2xl relative group">
         {/* Animated Background Glow */}
         <div className="absolute inset-0 bg-gradient-to-r from-vault-indigo/5 via-transparent to-vault-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
         
