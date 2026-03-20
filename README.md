@@ -64,7 +64,7 @@ graph TD
 
 | Hero Interface | Command Center | Consensus Engine |
 | :--- | :--- | :--- |
-| ![Quorex Hero](file:///C:/Users/shivamsoni/.gemini/antigravity/brain/b7297058-7606-4d41-9298-987b48f3472c/hero_page_1773865218063.png) | ![Quorex Dashboard](file:///C:/Users/shivamsoni/.gemini/antigravity/brain/b7297058-7606-4d41-9298-987b48f3472c/dashboard_page_1773865252022.png) | ![Quorex Governance](file:///C:/Users/shivamsoni/.gemini/antigravity/brain/b7297058-7606-4d41-9298-987b48f3472c/governance_page_1773865281190.png) |
+| ![Quorex Hero](./docs/screenshots/landing.png) | ![Quorex Dashboard](./docs/screenshots/dashboard.png) | ![Quorex Governance](./docs/screenshots/governance.png) |
 
 ---
 
