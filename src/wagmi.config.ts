@@ -4,6 +4,7 @@ import { polkadotHubTestnet } from './constants/chains'
 
 export const wagmiConfig = createConfig({
   chains: [polkadotHubTestnet],
+  multiInjectedProviderDiscovery: false,
   connectors: [
     injected(),
   ],

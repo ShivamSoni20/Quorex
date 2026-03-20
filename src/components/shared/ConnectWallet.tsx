@@ -26,9 +26,12 @@ export const ConnectWallet = () => {
   }, [])
 
   const handleDisconnect = () => {
-    disconnect()
-    setShowDropdown(false)
-    navigate('/')
+    disconnect({ connector }, {
+      onSuccess: () => {
+        setShowDropdown(false)
+        navigate('/', { replace: true })
+      }
+    })
   }
 
   if (isConnected && address) {
