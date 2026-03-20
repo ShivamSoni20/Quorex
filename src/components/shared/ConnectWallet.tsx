@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
 import { useAccount, useConnect, useDisconnect } from 'wagmi'
+import { useNavigate } from 'react-router-dom'
 import { formatAddress } from '../../utils/format'
 
 export const ConnectWallet = () => {
   const { address, isConnected, chain } = useAccount()
   const { connect, connectors } = useConnect()
   const { disconnect } = useDisconnect()
+  const navigate = useNavigate()
   const [showDropdown, setShowDropdown] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
@@ -22,6 +24,12 @@ export const ConnectWallet = () => {
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
+
+  const handleDisconnect = () => {
+    disconnect()
+    setShowDropdown(false)
+    navigate('/')
+  }
 
   if (isConnected && address) {
     return (
@@ -50,10 +58,7 @@ export const ConnectWallet = () => {
             </div>
             
             <button
-              onClick={() => {
-                disconnect()
-                setShowDropdown(false)
-              }}
+              onClick={handleDisconnect}
               className="w-full p-4 rounded-xl bg-vault-rose/10 hover:bg-vault-rose/20 text-vault-rose text-[9px] font-black uppercase tracking-[0.25em] transition-all border border-vault-rose/20 flex items-center justify-center gap-2 group"
             >
               <svg className="w-3.5 h-3.5 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
